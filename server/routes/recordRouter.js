@@ -1,10 +1,9 @@
 const Router = require('express')
 const router = new Router()
+const recordController = require('../controllers/recordController')
 
-router.post('/',)
-router.get('/',)
-router.put('/',)
-router.delete('/',)
-
+router.post('/', recordController.createRecord)
+router.get('/:record_id', recordController.getRecord)
+router.put('/:record_id', recordController.updateRecord)
 
 module.exports = router

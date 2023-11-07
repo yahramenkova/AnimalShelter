@@ -1,11 +1,10 @@
 const Router = require('express')
 const router = new Router()
+const educationController = require('../controllers/educationController')
 
-router.post('/',)
-router.get('/',)
-router.get('/:id',)
+router.post('/', educationController.create)
+router.get('/', educationController.getAll)
+router.get('/material/:material_id', educationController.getOneMaterial)
 router.put('/',)
-router.delete('/',)
-
 
 module.exports = router
