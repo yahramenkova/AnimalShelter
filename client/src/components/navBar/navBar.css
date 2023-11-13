@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@400;500;700&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+html{
+box-sizing: border-box;
+}
+*,*::after, *::before{
+box-sizing: inherit;
+margin: 0;
+padding: 0;
+}
+ul{
+list-style-type: none; }
+a{
+ text-decoration: none;
+ color: inherit;
+}
+.menu_list{
+    display: flex;
+    gap: 38px;
+    padding-top: 1.8rem;
+    }
+    .menu_list li{
+    color: #0D0D0D;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+    .menu_list-link{
+    color: #0D0D0D;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    }
+    .menu_list :hover{
+    color: #4B5A31;
+    }

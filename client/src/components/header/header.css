@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@400;500;700&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+html{
+box-sizing: border-box;
+}
+*,*::after, *::before{
+box-sizing: inherit;
+margin: 0;
+padding: 0;
+}
+header {
+display: flex;
+max-width: 100rem;
+width: 100%;
+height: 120px;
+justify-content: space-between;
+padding-top: 1.3%;
+background: #CDC5BF;
+padding-left: 3.8%;
+padding-right: 4.8%;
+}
+.logo{
+width: 378px;
+height: 80px;
+}
+
+.button-log{
+    display: flex;
+    gap: 32px;
+    padding-top: 1.1%;
+    }
+    .button-logIn{
+    width: 152px;
+    height: 52px;
+    border-radius: 20px;
+    background: #FFF;
+    border: none;
+    color: #AFAFAF;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+    .button-logUp{
+    width: 152px;
+    height: 52px;
+    border-radius: 20px;
+    background: #858D70;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    }
+    .button-logUp:hover {
+      background-color: #4B5A31; /* Задайте цвет при наведении */
+    }
+    .button-logIn:hover {
+      background-color: #4B5A31; /* Задайте цвет при наведении */
+    }

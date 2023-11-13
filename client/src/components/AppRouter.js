@@ -3,7 +3,7 @@ import { authRoutes, publicRoutes } from '../routes';
 
 
 const AppRouter = () => {
-   const isAuth = false
+   const isAuth = true
     return (
         <Routes>
             {isAuth && authRoutes.map(({ path, Component }) => (

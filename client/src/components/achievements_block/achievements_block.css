@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&family=Montserrat:wght@400;500;700&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+.rec_gradient {
+    width: 100%;
+    height: 25rem;
+    background: linear-gradient(180deg, rgba(121, 126, 114, 0.30) 0%, rgba(243, 199, 48, 0.30) 0.01%, rgba(243, 199, 48, 0.00) 100%);
+    position: relative;
+  }
+  .home_pet {
+    padding-top: 3rem;
+    padding-left: 46%;
+  }
+  .text_achievements {
+    color: #4B5A31;
+    font-size: 48px;
+    z-index: 4;
+    width: 1000px;
+    padding: 0;
+    position: absolute;
+    padding-top: 1.4%; 
+    left: 21.7%;
+  }
+  .achievements {
+    max-width: 100%;
+    height: 592.019px;
+    z-index: 4;
+    position: relative;
+  }
+  
+  .achievements_wave {
+    width: 98.65vw;
+    object-fit: cover;
+    position: relative;
+    padding: 0;
+    top: 0;
+    left: 0;
+
+  }
+  
+  .achievements_text_block {
+    display: flex;
+    flex-direction: column;
+    z-index: 8;
+    max-width: 360px;
+    position: absolute;
+    margin-left: 63rem;
+    margin-top: 12rem;
+    gap: 10px;
+    top: 0; /* Adjust based on your layout */
+    left: 0; /* Adjust based on your layout */
+  }
+  
+  .achievements h1 {
+    font-size: 32px;
+    font-weight: 500;
+    text-transform: capitalize;
+    width: 215.973px;
+    height: 75.115px;
+  }
+  .achievements .achiev1 {
+    font-size: 24px;
+    line-height: 129%;
+    text-transform: capitalize;
+    font-weight: 400;
+  }
+  .achievements .achiev2 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .achiev_button {
+    width: 247.078px;
+    height: 51.394px;
+    transform: rotate(-0.087deg);
+    border-radius: 26px;
+    border: none;
+    background: #ADB1A5;
+    box-shadow: 0px 0px 20px 0px rgba(255, 229, 154, 0.70);
+  }
+  h1{
+    font-family: Roboto;
+    line-height: normal;
+    color: #000;
+    font-weight: 700;
+    font-style: normal;
+    line-height: normal;
+    }
+    h2{
+    color: #0D0D0D;
+    font-family: Montserrat;
+    font-style: normal;
+    line-height: normal;
+    font-weight: 400;
+    }
