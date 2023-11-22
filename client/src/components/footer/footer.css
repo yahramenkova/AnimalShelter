@@ -26,7 +26,7 @@ text-align: center;
     gap: 12rem;
     color: rgb(255, 255, 255);
     padding-top: 7rem;
-    padding-left: 12rem;
+    padding-left: 22rem;
     position: relative;
 }
 .line{
@@ -64,6 +64,7 @@ background-color: #CDC5BF;
     padding-top: 1.2rem;
     line-height: normal;
     font-weight: 400;
+    font-size: 1.2rem;
 }
 .information{
 display: flex;

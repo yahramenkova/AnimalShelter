@@ -1,11 +1,12 @@
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
 import Catalog from "./pages/Catalog";
+import Education from "./pages/Education";
 import Event from "./pages/Event";
 import Home from "./pages/Home";
 import LostAnimal from "./pages/LostAnimal";
 import Reg from "./pages/Reg";
-import { ADMIN_ROUTE, CATALOG_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE } from "./utils/consts";
 
 export const authRoutes =[
     {
@@ -39,5 +40,10 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         Component : Auth
+    },
+    {
+        path: EDUCATION_ROUTE,
+        Component : Education
     }
+
 ]

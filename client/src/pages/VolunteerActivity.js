@@ -4,7 +4,7 @@ import Header from '../components/header/header'
 function VolunteerActivity() {
   return (
     <div>
-      
+    <Header/>
     </div>
   )
 }
