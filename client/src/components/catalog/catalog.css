@@ -2,3 +2,10 @@
     flex-grow: 1;
     height: 100%;
   }
+  .block_catalog{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 равных колонки */
+    gap: 1.6rem; /* пространство между колонками */
+    width: 100%; /* ширина контейнера 100% */
+    padding: 1rem;
+  }

@@ -6,7 +6,8 @@ import Event from "./pages/Event";
 import Home from "./pages/Home";
 import LostAnimal from "./pages/LostAnimal";
 import Reg from "./pages/Reg";
-import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE } from "./utils/consts";
+import VolunteerActivity from "./pages/VolunteerActivity";
+import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE } from "./utils/consts";
 
 export const authRoutes =[
     {
@@ -44,6 +45,9 @@ export const publicRoutes = [
     {
         path: EDUCATION_ROUTE,
         Component : Education
+    },
+   {
+        path: VOLUNTEER_ROUTE,
+        Component : VolunteerActivity
     }
-
 ]
