@@ -8,8 +8,10 @@ function Home() {
   return (
     <div>
       <Header />
+      <main>
       <HomeBanner />
       <AchievementsBlock />
+      </main>
       <Footer />
     </div>
   )

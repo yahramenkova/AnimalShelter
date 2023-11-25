@@ -1,0 +1,63 @@
+.main_lost_animal{
+    display: flex;
+    width: 100%;
+    }
+    .lost_animal_map{
+    display: flex;
+    flex-direction: column;
+    max-width: 895px;
+    width: 100%;
+    gap: 40px;
+    }
+    .lost_anml{
+    display: flex;
+    gap: 40px;
+    padding-left: 4%;
+    }
+    .lost_inf{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: center;
+    }
+    .lost_pet1{
+    width: 392px;
+    }
+    .lost_animal_map h1{
+    color: #4B5A31;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    }
+    .lost_animal_map h2{
+    color: #0D0D0D;
+    font-family: Montserrat;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 110%; /* 25.3px */
+    }
+    .lost_animal_map p{
+    color: #393939;
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    }
+    .lost_animal_map .line{
+    background: var(--light-gray, #595959);
+    width: 786px;
+    height: 1.389px;
+    padding-left: 10%;
+    }
+    .fone{
+        object-fit: cover; /* Растягивает изображение, сохраняя соотношение сторон */
+        object-position: right; /* Центрирует изображение */
+        width: 70rem;
+        height: auto;
+        margin: 0;
+    }
