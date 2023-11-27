@@ -6,8 +6,9 @@ import Event from "./pages/Event";
 import Home from "./pages/Home";
 import LostAnimal from "./pages/LostAnimal";
 import Reg from "./pages/Reg";
+import Review from "./pages/Review";
 import VolunteerActivity from "./pages/VolunteerActivity";
-import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE, REVIEW_ROUTE } from "./utils/consts";
 
 export const authRoutes =[
     {
@@ -21,6 +22,10 @@ export const authRoutes =[
     {
         path: EVENT_ROUTE,
         Component : Event
+    },
+    {
+        path: REVIEW_ROUTE,
+        Component : Review
     }
 
 ]

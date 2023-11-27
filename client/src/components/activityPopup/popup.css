@@ -1,0 +1,22 @@
+/* popup.css */
+.popup-overlay {
+  font-family: Arial, sans-serif;
+  max-width: 40rem;
+  font-size: 1.3rem;
+  position: relative;
+  padding: 1rem;
+  background-color: rgb(214, 213, 213);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup-overlay .close {
+  position: relative;
+  margin-left: 36rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
