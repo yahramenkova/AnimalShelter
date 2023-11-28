@@ -1,0 +1,25 @@
+.registration-form-container {
+    max-width: 70rem;
+    margin: auto;
+    padding: 7rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(243, 199, 48, 0.30) 0%, rgba(243, 199, 48, 0.00) 100%);
+    box-shadow: 0 0 4rem rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+ 
