@@ -1,12 +1,16 @@
 import { Route, Routes } from 'react-router-dom'; // Обратите внимание, что используется Routes вместо Switch
 import { authRoutes, publicRoutes } from '../routes';
+import { useContext } from 'react';
+import { Context } from '../index';
 
 
 const AppRouter = () => {
-   const isAuth = true
+   const {user} =useContext(Context)
+
+   console.log(user)
     return (
         <Routes>
-            {isAuth && authRoutes.map(({ path, Component }) => (
+            {user.isAuth && authRoutes.map(({ path, Component }) => (
                 <Route key={path} path={path} element={<Component />} />
             ))}
 

@@ -4,7 +4,8 @@ import Button from '../button/button';
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     photo: null,
@@ -29,7 +30,8 @@ const RegistrationForm = () => {
 
     // Reset the form after submission
     setFormData({
-      username: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       photo: null,
@@ -41,11 +43,22 @@ const RegistrationForm = () => {
       <h2>Registration Form</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          First Name:
           <input
             type="text"
-            name="username"
-            value={formData.username}
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <br />
+        <label>
+          Last Name:
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             required
           />
