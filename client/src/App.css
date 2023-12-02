@@ -83,6 +83,7 @@ padding: 0;
   max-width: 270px;
   width: 100%;
   height: 270px;
+  object-fit: cover;
   }
  .catalog_block h1{
   color: #4B5A31;
