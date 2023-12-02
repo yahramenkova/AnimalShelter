@@ -27,7 +27,6 @@ export const authRoutes =[
         path: REVIEW_ROUTE,
         Component : Review
     }
-
 ]
 
 export const publicRoutes = [

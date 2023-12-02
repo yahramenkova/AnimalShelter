@@ -5,12 +5,11 @@ import ReviewBlock from '../components/reviewBlock/reviewBlock';
 import RevewBanner from '../pictures/blog.svg'
 
 export default function Review() {
-
   return (
     <div className='review-page'>
       <Header />
       <div className='block_review'>
-        <img class="blog" src={RevewBanner} alt=""/>
+        <img className="blog" src={RevewBanner} alt=""/>
         <div className='text_block_review'>
         <h1>Reviews & ratings</h1>
         <ReviewBlock />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './registrationForm.css'; // Подключаем файл стилей
 import Button from '../button/button';
+import {registration} from '../../http/userAPI'
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,12 @@ const RegistrationForm = () => {
       [name]: fileValue,
     });
   };
+
+  const signIn = async () =>{
+    const response = await registration(formData.firstName, formData.lastName, formData.email, formData.password, formData.photo);
+    console.log(response);
+ };
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,7 +103,7 @@ const RegistrationForm = () => {
           />
         </label>
         <br />
-        <Button label='register' customClass='button-logUp'/>
+        <Button label='register' customClass='button-logUp' onClick={signIn}/>
       </form>
     </div>
   );

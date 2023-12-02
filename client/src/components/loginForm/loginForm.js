@@ -1,68 +1,55 @@
-import React, { useState } from 'react';
-import '../registrationForm/registrationForm.css'; // Подключаем файл стилей
-import Button from '../button/button';
+import React, { useContext, useState } from 'react';
+import { login } from '../../http/userAPI';
+import { useNavigate } from 'react-router-dom';
+import { CATALOG_ROUTE} from '../../utils/consts';
+import { Context } from '../../index';
+import { observer } from 'mobx-react-lite';
 
-const LoginForm = ({ onLogin }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+const AuthorizationForm = observer(() => {
+  const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+  const [password, setPassword] = useState('');
+  const {user} = useContext(Context)
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('User Logged In:', formData);
+   const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Add your logic for user login here
-    // You can send the login data to the server for authentication
-
-    // Notify the parent component about successful login
-    onLogin();
-
-    // Reset the form after submission
-    setFormData({
-      email: '',
-      password: '',
-    });
-  };
-
-  return (
-    <div className="registration-form-container">
-      <h2>Login Form</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <Button label='enter' customClass="button-logIn"/>
-      </form>
-    </div>
-  );
+  try {
+    const userData = await login(email, password);
+    console.log('Пользователь вошел:', userData);
+    user.setUser(userData);
+    user.setIsAuth(true);
+    console.log('isAuth после авторизации:', user.isAuth); 
+    navigate(CATALOG_ROUTE);
+    // Остальная часть вашего кода...
+  } catch (error) {
+    console.error('Ошибка авторизации:', error.message);
+    // Обработайте ошибку соответствующим образом
+  }
 };
 
-export default LoginForm;
+
+  return (
+    <section className="autorize">
+      <div className="autorize__container">
+        <div className="autorize_text">
+          <h2 className="enter__data">Enter your data</h2>
+        </div>
+        <div className="form__container">
+          <form onSubmit={handleSubmit} className="form">
+            <input type="text" className="input_field" placeholder="Login/Email" onChange={handleEmailChange} />
+            <input type="password" className="input_field" placeholder="Password" onChange={handlePasswordChange} />
+            <button type="submit" className="submit__button2">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+});
+
+export default AuthorizationForm;

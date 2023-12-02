@@ -1,14 +1,15 @@
-import React from 'react'
-import LoginForm from '../components/loginForm/loginForm'
-import Header from '../components/header/header'
+import React from 'react';
+import LoginForm from '../components/loginForm/loginForm';
+import Header from '../components/header/header';
 
 function Auth() {
+
   return (
     <div>
-    <Header/>
-    <LoginForm/> 
+      <Header />
+      <LoginForm />
     </div>
-  )
+  );
 }
 
-export default Auth
+export default Auth;
