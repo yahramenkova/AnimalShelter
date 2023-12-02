@@ -3,7 +3,7 @@
   font-family: Arial, sans-serif;
   max-width: 40rem;
   font-size: 1.3rem;
-  position: relative;
+  position: absolute;
   padding: 1rem;
   background-color: rgb(214, 213, 213);
   border-radius: 1rem;

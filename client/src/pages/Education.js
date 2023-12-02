@@ -8,8 +8,10 @@ export default function Education() {
   return (
     <div className="education-container">
       <Header />
+      <div className='main-education'>
       <img className="Educationbanner" src={EducationBanner} alt="Banner" />
       <ArticleBlock />
+      </div>
       <Footer />
     </div>
   );

@@ -4,14 +4,13 @@ import './popup.css'
 
 const ActivityPopup = ({ isOpen, onClose, content }) => {
   if (!isOpen) {
-    return null; // Don't render anything if the popup is closed
+    return null; 
   }
 
   return (
     <div className="popup-overlay">
       <div className="popup-content">
         <button className='close' onClick={onClose}>&#10006;</button>
-        {/* Render content dynamically based on its type */}
         {Object.entries(content).map(([key, value]) => (
           <div key={key}>
             <strong>{key}:</strong> {renderContent(value)}
@@ -25,11 +24,10 @@ const ActivityPopup = ({ isOpen, onClose, content }) => {
 const renderContent = (content) => {
   // Check the type of content and render accordingly
   if (typeof content === 'string') {
-    return content; // Render plain text
+    return content; 
   } else if (React.isValidElement(content)) {
-    return content; // Render React element (e.g., a form)
+    return content; 
   } else if (typeof content === 'object' && content !== null) {
-    // Render nested properties recursively
     return (
       <div>
         {Object.entries(content).map(([key, value]) => (
@@ -40,7 +38,7 @@ const renderContent = (content) => {
       </div>
     );
   } else {
-    return String(content); // Render other types as strings
+    return String(content); 
   }
 };
 
