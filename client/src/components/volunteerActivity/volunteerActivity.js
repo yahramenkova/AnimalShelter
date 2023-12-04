@@ -1,12 +1,27 @@
 // volunteerActivity.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './volunteerActivity.css';
 import ActivityPopup from '../activityPopup/activityPopup';
 import Button from '../button/button';
+import { getActivity } from '../../http/volunteerActivityAPI'; 
 
 export default function VolunteerActivity() {
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState(null);
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const activitiesData = await getActivity();
+        setActivities(activitiesData);
+      } catch (error) {
+        console.error('Error while fetching volunteer activities:', error);
+      }
+    };
+
+    fetchActivities();
+  }, []); 
 
   const openPopup = (content) => {
     setPopupContent(content);
@@ -18,23 +33,20 @@ export default function VolunteerActivity() {
     setPopupContent(null);
   };
 
-  const articleContent = {
-    title: 'Paws together',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-  };
-
   return (
     <div className='volunteer_block'>
       <h1>Volunteer Activity</h1>
       <div className='volunteer_inf'>
-        <div className='active1'>
-          <img className="img-activity" src="https://i.pinimg.com/474x/db/2f/11/db2f1157b57427bb0ebe702308bf895c.jpg" alt="" />
-          <h2>Paws together</h2>
-          <p>A volunteer day dedicated to active interaction with furry wards. Volunteers will help with walks, games and training of animals, creating strong bonds between a person and a pet.</p>
-          <h3>December 23, 2022</h3>
-          <Button  label='read more' customClass='achiev_button' onClick={() => openPopup(articleContent)}> </Button>
-          <ActivityPopup isOpen={isPopupOpen} onClose={closePopup} content={popupContent} />
-        </div>
+        {activities.map((activity) => (
+          <div key={activity.id} className='active1'>
+            <img className="img-activity" src={activity.img} alt={activity.activity_type} />
+            <h2>{activity.activity_type}</h2>
+            <p>{activity.description}</p>
+            <h3>{activity.date}</h3>
+            <Button label='read more' customClass='review_button' onClick={() => openPopup(activity)} />
+          </div>
+        ))}
+        <ActivityPopup isOpen={isPopupOpen} onClose={closePopup} content={popupContent} />
       </div>
     </div>
   );

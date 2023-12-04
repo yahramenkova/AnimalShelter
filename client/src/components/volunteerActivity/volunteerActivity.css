@@ -37,6 +37,7 @@ padding-bottom: 1.8rem;
 .img-activity{
     width: 40rem;
     height: 30rem;
+    object-fit: cover;
 }
 .active1{
     display: flex;
