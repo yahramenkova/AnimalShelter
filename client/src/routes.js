@@ -1,4 +1,5 @@
 import Admin from "./pages/Admin";
+import AnimalCard from "./pages/AnimalCard";
 import Auth from "./pages/Auth";
 import Catalog from "./pages/Catalog";
 import Education from "./pages/Education";
@@ -8,7 +9,7 @@ import LostAnimal from "./pages/LostAnimal";
 import Reg from "./pages/Reg";
 import Review from "./pages/Review";
 import VolunteerActivity from "./pages/VolunteerActivity";
-import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE, REVIEW_ROUTE } from "./utils/consts";
+import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, EVENT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE, REVIEW_ROUTE,ANIMAL_DETAILS_ROUTE } from "./utils/consts";
 
 export const authRoutes =[
     {
@@ -26,6 +27,10 @@ export const authRoutes =[
     {
         path: REVIEW_ROUTE,
         Component : Review
+    }, 
+    {
+        path: ANIMAL_DETAILS_ROUTE + '/:id',
+        Component : AnimalCard
     }
 ]
 

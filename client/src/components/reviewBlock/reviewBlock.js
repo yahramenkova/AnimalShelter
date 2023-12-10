@@ -39,7 +39,7 @@ const ReviewBlock = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className='col-reveiw'>
           {reviews.map((review, index) => (
             <div key={index} className="feedback_block">
               <div className='rec_feedback1'>

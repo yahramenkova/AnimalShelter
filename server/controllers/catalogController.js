@@ -29,21 +29,23 @@ class AnimalCatalogController {
         }
     }
 
-    async getAnimalById(req, res, next) {
+    async getAnimalById(req, res) {
         try {
-            const { animal_id } = req.params;
-            const animal = await AnimalCatalog.findByPk(animal_id);
-
-            if (!animal) {
-                return next(ApiError.notFound('Животное не найдено'));
-            }
-
-            return res.json(animal);
+          const { animal_id } = req.params;
+          const animal = await AnimalCatalog.findOne({
+            where: {animal_id: animal_id },
+          });
+      
+          if (!animal) {
+            return res.status(400).json({ error: 'Животное не найдено' });
+          }
+      
+          return res.json(animal);
         } catch (error) {
-            console.error(error);
-            return next(ApiError.internal('Произошла ошибка при получении информации о животном'));
+          console.error(error);
+          return res.status(500).json({ error: 'Произошла ошибка при получении информации о животном' });
         }
-    }
+      }
 
     async getAllAnimals(req, res, next) {
         try {

@@ -4,6 +4,10 @@ flex-direction: column;
 align-items: center;
 padding-bottom: 2rem;
 }
+.col-reveiw{
+  max-height: 40rem;
+  overflow-y: auto;
+}
 .feedback_block p{
 color: #141414;
 text-align: center;

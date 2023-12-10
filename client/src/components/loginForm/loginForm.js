@@ -24,10 +24,8 @@ const AuthorizationForm = observer(() => {
     user.setIsAuth(true);
     console.log('isAuth после авторизации:', user.isAuth); 
     navigate(CATALOG_ROUTE);
-    // Остальная часть вашего кода...
   } catch (error) {
     console.error('Ошибка авторизации:', error.message);
-    // Обработайте ошибку соответствующим образом
   }
 };
 
