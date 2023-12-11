@@ -13,22 +13,6 @@ class RecordController {
         }
     }
 
-    async getRecord(req, res, next) {
-        try {
-            const { record_id } = req.params;
-            const record = await Record.findByPk(record_id);
-
-            if (!record) {
-                return next(ApiError.notFound('Запись не найдена'));
-            }
-
-            return res.json(record);
-        } catch (error) {
-            console.error(error);
-            return next(ApiError.internal('Произошла ошибка при получении записи'));
-        }
-    }
-
     async updateRecord(req, res, next) {
         try {
             const { record_id } = req.params;

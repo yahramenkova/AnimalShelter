@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path');
-const { AnimalCatalog } = require('../models/models');
+const { AnimalCatalog, Record } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class AnimalCatalogController {
@@ -34,6 +34,10 @@ class AnimalCatalogController {
           const { animal_id } = req.params;
           const animal = await AnimalCatalog.findOne({
             where: {animal_id: animal_id },
+            include: [{
+                model: Record,
+                attributes: ['weight', 'surgical_interventions', 'vaccinations', 'chronic_diseases', 'allergies']
+             }]
           });
       
           if (!animal) {

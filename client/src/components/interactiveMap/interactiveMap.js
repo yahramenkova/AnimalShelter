@@ -9,6 +9,7 @@ const InteractiveMap = () => {
   const { id } = useParams();
   console.log(id);
   const [animalData, setAnimalData] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -27,6 +28,13 @@ const InteractiveMap = () => {
   if (!animalData) {
     return <div>Loading...</div>;
   }
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+ 
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <div className="main-map">
@@ -46,8 +54,20 @@ const InteractiveMap = () => {
             <p>Notes: {animalData.notes}</p>
             <p>Price: ${animalData.price.toFixed(2)}</p>
               <h2 className="date">{animalData.date}</h2>
-              <Button  customClass='review_button'
-              label='medical card' />
+              <Button customClass='review_button'
+     label='medical card' 
+     onClick={openPopup} />
+     {showPopup && (
+       <div className="popup">
+         <h2>Medical Card</h2>
+         <p>weight: {animalData.record.weight}</p>
+         <p>surgical interventions: {animalData.record.surgical_interventions}</p>
+         <p>vaccinations: {animalData.record.vaccinations}</p>
+         <p>chronic diseases: {animalData.record.chronic_diseases}</p>
+         <p>allergies: {animalData.record.allergies}</p>
+         <Button onClick={closePopup} label='close' customClass='review_button'/>
+       </div>
+     )}
           </div>
         </div>
         <img className="pet_photo" src={animalData.img} alt='' />

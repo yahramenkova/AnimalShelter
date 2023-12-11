@@ -14,7 +14,7 @@ export const getAnimals = async () => {
 export const getAnimalById = async (animalId) => {
   try {
     const response = await $authHost.get(`api/catalog/` + animalId);
-    return response.data; // Assuming data about the animal is in the "data" property of the response
+    return response.data; 
   } catch (error) {
     console.error('Error while fetching animal data by ID:', error);
     throw error;
