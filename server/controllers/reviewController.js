@@ -1,4 +1,4 @@
-const { Review } = require('../models/models');
+const { Review, User } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class ReviewController {
@@ -22,16 +22,22 @@ class ReviewController {
         }
     }
 
-    async getAll(req, res) {
+    async getAll(req, res, next) {
         try {
-            // Получите все отзывы, например, используя метод findAll модели Review
-            const reviews = await Review.findAll();
-            // Отправьте список отзывов в ответ клиенту
+            const reviews = await Review.findAll(
+                {
+                    include: [{
+                       model: User,
+                       attributes: ['firstName', 'lastName', 'photo']
+                    }]
+                }
+            );
             return res.json(reviews);
         } catch (error) {
             return next(ApiError.internal('Произошла ошибка при получении отзывов'));
         }
-    }
+     }     
 }
+
 
 module.exports = new ReviewController();

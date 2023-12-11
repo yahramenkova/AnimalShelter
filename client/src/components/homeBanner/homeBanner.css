@@ -56,15 +56,21 @@
     padding-left: 0.9%;
     }
     .button_find_amimal{
-    width: 201px;
-    height: 52px;
+    width: 14rem;
+    height: 3.5rem;
+    color: #d1d1d1;
+    font-size: 1.2rem;
     background-color: #4B5A31;
     border-radius: 30px;
+    font-weight: 500;
     border: none;
     }
     .button_lost_amimal{
-        width: 201px;
-        height: 52px;
+        width: 14rem;
+        height: 3.5rem;
+        color: #4B5A31;
+        font-size: 1.2rem;
+        font-weight: 500;
         background-color: transparent;
         border-radius: 30px;
         border: solid 3px #4B5A31;

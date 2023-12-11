@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './homeBanner.css'
 import Banner from "../../pictures/Banner.svg"; // Здесь укажите правильный путь к вашему изображению
+import Button from '../button/button';
 
 function HomeBanner() {
   return (
@@ -12,7 +13,7 @@ function HomeBanner() {
         <h2>Explore the profiles of our furry friends and find someone who will become your faithful companion.</h2>
         <div className="button_block_find">
           <Link to="/catalog">
-            <button className="button_find_amimal">Catalog of animals</button>
+            <Button customClass='button_find_amimal' label='Catalog of animals'/>
           </Link>
           <Link to="/lostAnimal">
             <button className="button_lost_amimal">Lost animals</button>
