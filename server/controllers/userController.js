@@ -57,7 +57,7 @@ class UserController {
             return next(ApiError.internal('Указан неверный пароль'));
           }
       
-          const token = generateJwt(user.id, user.email, user.role);
+          const token = generateJwt(user.user_id, user.email, user.role);
           return res.json({ token });
         } catch (error) {
           // Handle unexpected errors

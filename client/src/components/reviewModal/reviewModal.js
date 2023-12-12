@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import { Modal, Form, Alert } from 'react-bootstrap';
 import Button from '../button/button';
+import { createReview } from '../../http/reviewAPI'; // Изменено имя импортируемой функции
 
-const ReviewModal = ({ isOpen, onClose, onAddReview }) => {
+const ReviewModal = ({ isOpen, onClose }) => {
   const [rating, setRating] = useState('');
   const [comment, setComment] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => { // Используем ключевое слово async
     event.preventDefault();
-    
-    // Add your logic to handle the submitted review
+
     console.log('Submitted Review:', { rating, comment });
 
-    // Call the onAddReview function to add the review to the list
-    onAddReview({ rating, comment });
+    if (rating !== '' && comment !== '') {
+      try {
+        await createReview(rating, comment); // Используем функцию createReview для создания отзыва
 
-    // Show the alert after handling the submission
-    setShowAlert(true);
-
-    // Close the modal after handling the submission (optional)
+        setShowAlert(true);
+      } catch (error) {
+        console.error('Error submitting review:', error);
+      }
+    }
     onClose();
   };
 

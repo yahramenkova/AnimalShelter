@@ -56,16 +56,6 @@ const AnimalCatalog = sequelize.define('animal_catalog', {
 });
 
 
-const Event = sequelize.define('event', {
-    event_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    name: { type: DataTypes.STRING, allowNull: false },
-    event_date: { type: DataTypes.DATE, allowNull: false },
-    event_time: { type: DataTypes.TIME, allowNull: false },
-    description: { type: DataTypes.STRING, allowNull: false },
-}, {
-    timestamps: false
-});
-
 const Review = sequelize.define('review', {
     review_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     rating: { type: DataTypes.INTEGER, allowNull: false },
@@ -109,13 +99,7 @@ const VolunteerActivity = sequelize.define('volunteer_activity', {
     timestamps: false
 });
 
-const UserEvent = sequelize.define('user_event', {
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-}, {
-    timestamps: false
-});
-
-const EventAnimal = sequelize.define('event_animal', {
+const VolunteerVolunteerActivity = sequelize.define('volunteer_volunteerActivity', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 }, {
     timestamps: false
@@ -125,8 +109,6 @@ const EventAnimal = sequelize.define('event_animal', {
 User.hasOne(Volunteer, { foreignKey: 'user_id' });
 Volunteer.belongsTo(User, { foreignKey: 'user_id' });
 
-Volunteer.hasMany(VolunteerActivity, { foreignKey: 'volunteer_id' });
-VolunteerActivity.belongsTo(Volunteer, { foreignKey: 'volunteer_id' });
 
 User.hasMany(Review, { foreignKey: 'user_id' });
 Review.belongsTo(User, { foreignKey: 'user_id' });
@@ -134,22 +116,21 @@ Review.belongsTo(User, { foreignKey: 'user_id' });
 AnimalCatalog.hasOne(Record, { foreignKey: 'animal_id' });
 Record.belongsTo(AnimalCatalog, { foreignKey: 'animal_id' });
 
-User.belongsToMany(Event, { through: UserEvent });
-Event.belongsToMany(User, { through: UserEvent });
-
-Event.belongsToMany(AnimalCatalog, { through: EventAnimal });
-AnimalCatalog.belongsToMany(Event, { through: EventAnimal });
+Volunteer.belongsToMany(VolunteerActivity, { through: VolunteerVolunteerActivity });
+VolunteerActivity.belongsToMany(Volunteer, { through: VolunteerVolunteerActivity });
 
 module.exports = {
     User,
-    UserEvent,
     AnimalCatalog,
-    Event,
-    EventAnimal,
     Record,
     Review,
     LostAnimal,
     EducationMaterials,
     Volunteer,
     VolunteerActivity,
+    VolunteerVolunteerActivity,
 };
+
+
+
+

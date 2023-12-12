@@ -1,7 +1,6 @@
 const { Router } = require('express');
 const router = new Router();
 const userRouter = require('./userRouter');
-const eventRouter = require('./eventRouter');
 const reviewRouter = require('./reviewRouter');
 const recordRouter = require('./recordRouter');
 const educationRouter = require('./educationRouter');
@@ -13,7 +12,6 @@ const volunteerActivityRouter = require('./volunteerActivityRouter');
 
 router.use('/user', userRouter);
 router.use('/catalog', catalogRouter);
-router.use('/event', eventRouter);
 router.use('/volunteer', volunteerRouter);
 router.use('/lostAnimal', lostAnimalRouter);
 router.use('/education', educationRouter);

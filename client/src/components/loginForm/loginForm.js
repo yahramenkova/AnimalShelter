@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { login } from '../../http/userAPI';
 import { useNavigate } from 'react-router-dom';
 import { CATALOG_ROUTE} from '../../utils/consts';
-import { Context } from '../../index';
+import { Context } from '../..';
 import { observer } from 'mobx-react-lite';
 
 const AuthorizationForm = observer(() => {
@@ -22,6 +22,7 @@ const AuthorizationForm = observer(() => {
     console.log('Пользователь вошел:', userData);
     user.setUser(userData);
     user.setIsAuth(true);
+    console.log('Идентификатор пользователя:', localStorage.setItem('userId', userData.id));
     console.log('isAuth после авторизации:', user.isAuth); 
     navigate(CATALOG_ROUTE);
   } catch (error) {
