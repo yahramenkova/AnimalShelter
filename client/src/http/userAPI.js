@@ -10,7 +10,7 @@ export const registration = async (firstName, lastName, email, password, photo) 
     formData.append("password", password);
     formData.append("photo", photo);
 
-    const response = await $authHost.post('api/user/registration', formData);
+    const response = await $host.post('api/user/registration', formData);
 
     if (response.data && response.data.token) {
       const token = response.data.token;
@@ -21,7 +21,6 @@ export const registration = async (firstName, lastName, email, password, photo) 
       // Вернуть токен (или другую нужную информацию)
       return token;
     } else {
-      // Обработать сценарий, если токен отсутствует в ответе
       throw new Error('Token not found in server response');
     }
   } catch (error) {

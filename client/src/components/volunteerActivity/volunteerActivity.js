@@ -23,11 +23,22 @@ export default function VolunteerActivity() {
     fetchActivities();
   }, []); 
 
-  const openPopup = (content) => {
-    setPopupContent(content);
-    setPopupOpen(true);
-  };
 
+  const openPopup = (content) => {
+    let dateObj = new Date(content.date);
+    let day = dateObj.getDate();
+    let month = dateObj.getMonth() + 1; // месяцы от 1 до 12
+    let year = dateObj.getFullYear();
+    let formattedDate = day + "/" + month + "/" + year;
+ 
+    setPopupContent({
+      activity: content.activity_type,
+      description: content.description,
+      date: formattedDate,
+      duration: content.duration
+    });
+    setPopupOpen(true);
+ };
   const closePopup = () => {
     setPopupOpen(false);
     setPopupContent(null);
@@ -41,8 +52,6 @@ export default function VolunteerActivity() {
           <div key={activity.id} className='active1'>
             <img className="img-activity" src={activity.img} alt={activity.activity_type} />
             <h2>{activity.activity_type}</h2>
-            <p>{activity.description}</p>
-            <h3>{activity.date}</h3>
             <Button label='read more' customClass='review_button' onClick={() => openPopup(activity)} />
           </div>
         ))}

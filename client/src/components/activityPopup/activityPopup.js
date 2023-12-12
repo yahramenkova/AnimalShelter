@@ -8,7 +8,7 @@ const ActivityPopup = ({ isOpen, onClose, content }) => {
   }
 
   return (
-    <div className="popup-overlay">
+    <div className="popup">
       <div className="popup-content">
         <button className='close' onClick={onClose}>&#10006;</button>
         {Object.entries(content).map(([key, value]) => (

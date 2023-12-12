@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import ActivityPopup from '../activityPopup/activityPopup';
 import { getArticles } from '../../http/articleAPI';
 import Button from '../button/button';
+import { Link } from 'react-router-dom';
+
 
 const ArticleBlock = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -23,15 +25,21 @@ const ArticleBlock = () => {
   }, []);
 
   const handleArticleClick = (article) => {
+    let dateObj = new Date(article.upload_date);
+    let day = dateObj.getDate();
+    let month = dateObj.getMonth() + 1; // месяцы от 1 до 12
+    let year = dateObj.getFullYear();
+    let formattedDate = day + "/" + month + "/" + year;
+ 
     setPopupContent({
       title: article.title,
-      categore: article.category,
+      category: article.category,
       content: article.description,
-      link: article.file_url,
-      date: article.upload_date,
+      link: <Link to={article.file_url}>{article.file_url}</Link>,
+      date: formattedDate,
     });
     setPopupOpen(true);
-  };
+ };
 
   return (
     <div className="block_article">

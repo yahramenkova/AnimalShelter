@@ -10,10 +10,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.popup-overlay .close {
+.popup-content{
+  font-size: 1.6rem;
+}
+
+.popup .close {
   position: relative;
-  margin-left: 36rem;
-  font-size: 1rem;
+  margin-left: 63.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
   background: none;
   border: none;

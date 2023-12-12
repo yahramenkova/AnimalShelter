@@ -38,6 +38,8 @@ padding-bottom: 1.8rem;
     width: 40rem;
     height: 30rem;
     object-fit: cover;
+    border-radius: 2rem;
+    border: 1px solid #4B5A31;
 }
 .active1{
     display: flex;
