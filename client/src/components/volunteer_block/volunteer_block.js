@@ -1,5 +1,5 @@
 import React from 'react';
-import './achievements_block.css'
+import './volunteer_block.css'
 import Wave from "../../pictures/wave.svg";
 import PetHouse from "../../pictures/pet-house.png"
 import Button from '../button/button';
