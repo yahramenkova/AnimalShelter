@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react';
 import { login } from '../../http/userAPI';
 import { useNavigate } from 'react-router-dom';
 import { CATALOG_ROUTE} from '../../utils/consts';
-import { Context } from '../..';
+import { Context } from '../../index';
 import { observer } from 'mobx-react-lite';
+import Button from '../button/button';
+import './loginForm.css'
 
 const AuthorizationForm = observer(() => {
   const [email, setEmail] = useState('');
@@ -33,7 +35,7 @@ const AuthorizationForm = observer(() => {
 
   return (
     <section className="autorize">
-      <div className="autorize__container">
+      <div className="registration-form-container">
         <div className="autorize_text">
           <h2 className="enter__data">Enter your data</h2>
         </div>
@@ -41,9 +43,9 @@ const AuthorizationForm = observer(() => {
           <form onSubmit={handleSubmit} className="form">
             <input type="text" className="input_field" placeholder="Login/Email" onChange={handleEmailChange} />
             <input type="password" className="input_field" placeholder="Password" onChange={handlePasswordChange} />
-            <button type="submit" className="submit__button2">
-              Submit
-            </button>
+            <Button type="submit" customClass='button-logIn'
+              label='Submit'
+            />
           </form>
         </div>
       </div>

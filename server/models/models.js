@@ -31,9 +31,16 @@ const LostAnimal = sequelize.define('lost_animal', {
 const Volunteer = sequelize.define('volunteer', {
     volunteer_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     date_joined: { type: DataTypes.DATE, allowNull: false },
-    skills: { type: DataTypes.STRING },
-    assigned_events: { type: DataTypes.STRING },
-}, {
+    phone_number: { type: DataTypes.STRING, allowNull: false },
+    experience: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [['Yes', 'No']],
+      },
+    },
+  }, 
+ {
     timestamps: false
 });
 
@@ -99,11 +106,22 @@ const VolunteerActivity = sequelize.define('volunteer_activity', {
     timestamps: false
 });
 
+
+
 const VolunteerVolunteerActivity = sequelize.define('volunteer_volunteerActivity', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 }, {
     timestamps: false
 });
+
+Volunteer.prototype.addVolunteerActivities = async function (activityIds) {
+    const volunteerActivities = activityIds.map((activityId) => ({
+      volunteerVolunteerId: this.volunteer_id,
+      volunteerActivityActivityId: activityId,
+    }));
+  
+    await VolunteerVolunteerActivity.bulkCreate(volunteerActivities);
+  };
 
 // Определение связей между моделями
 User.hasOne(Volunteer, { foreignKey: 'user_id' });

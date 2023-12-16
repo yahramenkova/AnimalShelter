@@ -35,46 +35,46 @@
     z-index: 1;
     top: 0;
     left: 0;
-    object-fit: cover; /* Растягивает изображение, сохраняя соотношение сторон */
-    object-position: center; /* Центрирует изображение */
+    object-fit: cover; 
+    object-position: center; 
 }
 
-  
   .achievements_text_block {
     display: flex;
     flex-direction: column;
     z-index: 8;
-    max-width: 22rem;
-    position: absolute;
+    max-width: 30rem;
+    position: relative;
     margin-left: 73rem;
-    margin-top: 11rem;
-    gap: 10px;
-    top: 0; /* Adjust based on your layout */
-    left: 0; /* Adjust based on your layout */
+    padding-top: 12.6rem;
+    gap: 0.8rem;
   }
   
   .achievements h1 {
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 700;
     text-transform: capitalize;
-    width: 215.973px;
-    height: 75.115px;
+    width: 27rem;
+    height: 2rem;
   }
   .achievements .achiev1 {
     font-size: 24px;
     line-height: 129%;
     text-transform: capitalize;
-    font-weight: 400;
+    font-weight: 500;
   }
   .achievements .achiev2 {
     font-size: 16px;
     font-weight: 400;
   }
   .achiev_button {
-    width: 247.078px;
-    height: 51.394px;
+    width: 15rem;
+    height: 3rem;
     transform: rotate(-0.087deg);
     border-radius: 26px;
+    color: aliceblue;
+    font-size: 1.2rem;
+    margin-top: 0.4rem;
     border: none;
     background: #ADB1A5;
     box-shadow: 0px 0px 20px 0px rgba(255, 229, 154, 0.70);

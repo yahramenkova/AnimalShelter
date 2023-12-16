@@ -49,7 +49,7 @@ export default function VolunteerActivity() {
       <h1>Volunteer Activity</h1>
       <div className='volunteer_inf'>
         {activities.map((activity) => (
-          <div key={activity.id} className='active1'>
+          <div key={activity.activity_id} className='active1'>
             <img className="img-activity" src={activity.img} alt={activity.activity_type} />
             <h2>{activity.activity_type}</h2>
             <Button label='read more' customClass='review_button' onClick={() => openPopup(activity)} />
