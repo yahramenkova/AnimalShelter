@@ -1,15 +1,16 @@
-import React, { useContext} from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { authRoutes, publicRoutes } from "../routes";
 import { HOME_ROUTE } from '../utils/consts';
-import { Context } from '..';
+import { Context } from '../index';
 
-
-const AppRouter =() => {
+const AppRouter = () => {
   const { user } = useContext(Context);
-
   console.log('isAuth в AppRouter:', user.isAuth); 
-
+  useEffect(() => {
+    
+    console.log('isAuth в AppRouter:', user.isAuth); 
+  }, [user.isAuth]);
   return (
     <Routes>
       {user.isAuth && authRoutes.map(({ path, Component }) => (

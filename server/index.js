@@ -6,6 +6,7 @@ const cors = require('cors')
 const fileUpload = require('express-fileupload')
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleware')
+const auth = require('./middleware/authMiddleware')
 const path = require('path')
 
 const PORT = process.env.PORT || 7000
@@ -21,7 +22,7 @@ app.use('/api', router)
 
 //Обработка ошибок
 app.use(errorHandler)
-
+app.use(auth)
 
 const start = async () =>{
     try{

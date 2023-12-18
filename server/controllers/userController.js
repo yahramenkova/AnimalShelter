@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid')
 const path = require('path');
-const { User, Event, Volunteer, Review } = require('../models/models');
+const { User } = require('../models/models');
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(

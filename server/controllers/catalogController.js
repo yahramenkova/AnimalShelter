@@ -51,15 +51,69 @@ class AnimalCatalogController {
         }
       }
 
-    async getAllAnimals(req, res, next) {
+      async getAllAnimals(req, res, next) {
         try {
-            const animals = await AnimalCatalog.findAll();
-            return res.json(animals);
+          const animals = await AnimalCatalog.findAll({
+            where: {
+              status: 'продается'
+            }
+          });
+          return res.json(animals);
         } catch (error) {
-            console.error(error);
-            return next(ApiError.internal('Произошла ошибка при получении списка животных'));
+          console.error(error);
+          return next(ApiError.internal('Произошла ошибка при получении списка животных'));
         }
-    }
+      }
+
+      async  getAllCats(req, res, next) {
+        try {
+          const animals = await AnimalCatalog.findAll({
+            where: {
+              species: 'Cat',
+              status: 'продается'
+            }
+          });
+          return res.json(animals);
+        } catch (error) {
+          console.error(error);
+          return next(ApiError.internal('Произошла ошибка при получении списка животных'));
+        }
+      }
+
+      async  getAllDogs(req, res, next) {
+        try {
+          const animals = await AnimalCatalog.findAll({
+            where: {
+              species: 'Dog',
+              status: 'продается'
+            }
+          });
+          return res.json(animals);
+        } catch (error) {
+          console.error(error);
+          return next(ApiError.internal('Произошла ошибка при получении списка животных'));
+        }
+      }
+
+      async markAnimalAsSold(req, res, next) {
+        const { animal_id } = req.body;
+      
+        try {
+          const animal = await AnimalCatalog.findByPk(animal_id);
+      
+          if (!animal) {
+            return res.status(404).json({ error: 'Животное не найдено' });
+          }
+      
+          animal.status = 'продано';
+          await animal.save();
+      
+          return res.json({ message: 'Статус животного успешно изменен на "продано"' });
+        } catch (error) {
+          console.error(error);
+          return next(ApiError.internal('Произошла ошибка при изменении статуса животного'));
+        }
+      }
 
     async updateAnimal(req, res, next) {
         try {

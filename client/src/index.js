@@ -1,25 +1,20 @@
 import React, { createContext } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserStore from './store/UserStore';
 
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
 
 export const Context = createContext(null);
-root.render(
 
-  <Context.Provider value={{
-    user: new UserStore()
-  }}>
-    <App />
-  </Context.Provider>
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
+ReactDOM.render(
+  <React.StrictMode>
+    <Context.Provider value={{ user: new UserStore() }}>
+      <App />
+    </Context.Provider>
+  </React.StrictMode>,
+  rootElement
 );
-
 
 reportWebVitals();

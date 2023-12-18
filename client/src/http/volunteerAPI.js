@@ -1,4 +1,4 @@
-import { $host } from "./index";
+import { $host, $authHost } from "./index";
 
 export const registerVolunteer = async (volunteerData) => {
   try {
@@ -12,6 +12,16 @@ export const registerVolunteer = async (volunteerData) => {
     }
   } catch (error) {
     console.error('Ошибка при создании волонтера:', error);
+    throw error;
+  }
+};
+
+export const getVolunteer = async () => {
+  try {
+    const { data } = await $authHost.get('api/volunteer/'); 
+    return data;
+  } catch (error) {
+    console.error('Error while fetching articles:', error);
     throw error;
   }
 };

@@ -23,9 +23,9 @@ const AuthorizationForm = observer(() => {
     const userData = await login(email, password);
     console.log('Пользователь вошел:', userData);
     user.setUser(userData);
-    user.setIsAuth(true);
+    user.setIsAuth(true); // Используйте сеттер для изменения значения
+    console.log('isAuth после авторизации:', user.isAuth);
     console.log('Идентификатор пользователя:', localStorage.setItem('userId', userData.id));
-    console.log('isAuth после авторизации:', user.isAuth); 
     navigate(CATALOG_ROUTE);
   } catch (error) {
     console.error('Ошибка авторизации:', error.message);

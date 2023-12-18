@@ -11,6 +11,26 @@ export const getAnimals = async () => {
   }
 };
 
+export const getAllCats = async () => {
+  try {
+    const {data} = await $authHost.get('api/catalog/animal/cat');
+    return data;
+  } catch (error) {
+    console.error('Error while fetching animals:', error);
+    throw error;
+  }
+};
+
+export const getAllDogs = async () => {
+  try {
+    const {data} = await $authHost.get('api/catalog/animal/dog');
+    return data;
+  } catch (error) {
+    console.error('Error while fetching animals:', error);
+    throw error;
+  }
+};
+
 export const getAnimalById = async (animalId) => {
   try {
     const response = await $authHost.get(`api/catalog/` + animalId);
@@ -21,3 +41,19 @@ export const getAnimalById = async (animalId) => {
   }
 };
 
+export const markAnimalAsSold = async (animal)  => {
+  try {
+    const response = await $authHost.put('api/catalog/buy', {
+      animal_id: animal,
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ animal_id: animal }),
+    });
+    const data = response.data;
+    console.log(data.message);
+  } catch (error) {
+    console.error(error);
+  }
+}

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from '../button/button';
 
 function Header() {
+  
   return (
     <header>
     <div className="blockLogo"><img className="logo" src={Logo} alt="Logo" /></div>
@@ -16,6 +17,9 @@ function Header() {
     </Link>
     <Link to="/registration">
     <Button customClass="button-logUp" label="Log Up" />
+    </Link>
+    <Link to="/admin">
+    <Button customClass="button-logUp" label="Admin" />
     </Link>
     </div> 
     </header>
