@@ -3,27 +3,40 @@ import Accordion from 'react-bootstrap/Accordion';
 import { getVolunteer } from '../../http/volunteerAPI';
 
 export default function AdminBlock() {
- const [volunteers, setVolunteers] = useState([]);
+  const [volunteers, setVolunteers] = useState([]);
+  const [showAllVolunteers, setShowAllVolunteers] = useState(false);
 
- useEffect(() => {
-  const fetchVolunteers = async () => {
-    const volunteersData = await getVolunteer();
-    setVolunteers(volunteersData);
+  useEffect(() => {
+    const fetchVolunteers = async () => {
+      const volunteersData = await getVolunteer();
+      setVolunteers(volunteersData);
+    };
+
+    fetchVolunteers();
+  }, []);
+
+  const handleShowAllVolunteers = () => {
+    setShowAllVolunteers(!showAllVolunteers);
   };
 
-  fetchVolunteers();
- }, []);
-
- return (
-  <div>
-    <Accordion>
-      {volunteers.map((volunteer, index) => (
-        <Accordion.Item eventKey={index.toString()} key={index}>
-          <Accordion.Header>{volunteer.phone_number}</Accordion.Header>
-          <Accordion.Body>{volunteer.experience}</Accordion.Body>
+  return (
+    <div>
+      <Accordion>
+        <Accordion.Item eventKey="all-volunteers" style={{ display: showAllVolunteers ? 'block' : 'none' }}>
+          <Accordion.Header>Show All Volunteers</Accordion.Header>
+          <Accordion.Body>
+            {volunteers.map((volunteer, index) => (
+              <div key={index}>
+                <p>{volunteer.phone_number}</p>
+                <p>{volunteer.experience}</p>
+              </div>
+            ))}
+          </Accordion.Body>
         </Accordion.Item>
-      ))}
-    </Accordion>
-  </div>
- );
+      </Accordion>
+      {!showAllVolunteers && (
+        <button onClick={handleShowAllVolunteers}>Show All Volunteers</button>
+      )}
+    </div>
+  );
 }

@@ -1,28 +1,21 @@
-import React, { useContext, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { authRoutes, publicRoutes } from "../routes";
-import { HOME_ROUTE } from '../utils/consts';
-import { Context } from '../index';
+import { Context } from '..';
 
 const AppRouter = () => {
-  const { user } = useContext(Context);
-  console.log('isAuth в AppRouter:', user.isAuth); 
-  useEffect(() => {
-    
-    console.log('isAuth в AppRouter:', user.isAuth); 
-  }, [user.isAuth]);
-  return (
-    <Routes>
-      {user.isAuth && authRoutes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} />
-      ))}
-
-      {publicRoutes.map(({ path, Component }) => (
-        <Route key={path} path={path} element={<Component />} />
-      ))}
-      <Route path="/" element={<Navigate to={HOME_ROUTE} />} />
-    </Routes>
-  );
+    const {user} = useContext(Context);
+    console.log(user.isAuth)
+    return (
+        <Routes>
+            {user.isAuth && authRoutes.map(({ path, Component }) => (
+                <Route key={path} path={path} element={<Component />} />
+            ))}
+            {publicRoutes.map(({ path, Component }) => (
+                <Route key={path} path={path} element={<Component />} />
+            ))}
+        </Routes>
+    );
 };
 
 export default AppRouter;
