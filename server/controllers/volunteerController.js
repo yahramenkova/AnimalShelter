@@ -1,4 +1,4 @@
-const { Volunteer, VolunteerActivity, VolunteerVolunteerActivity } = require('../models/models');
+const { Volunteer, VolunteerActivity, User } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class VolunteerController {
@@ -30,7 +30,13 @@ class VolunteerController {
 
     async getAllVolunteers(req, res, next) {
         try {
-            const volunteers = await Volunteer.findAll();
+            const volunteers = await Volunteer.findAll({
+              include: [{
+                model: User,
+                attributes: ['firstName', 'lastName']
+             }]
+            }
+            );
             return res.json(volunteers);
         } catch (error) {
             console.error(error);

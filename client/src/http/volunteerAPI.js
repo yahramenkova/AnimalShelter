@@ -19,7 +19,16 @@ export const registerVolunteer = async (volunteerData) => {
 export const getVolunteer = async () => {
   try {
     const { data } = await $authHost.get('api/volunteer/'); 
-    return data;
+    const volunteersWithUserData = data.map(volunteer => {
+      return {
+        ...volunteer,
+        user: {
+          firstName: volunteer.user.firstName,
+          lastName: volunteer.user.lastName
+        }
+      };
+    });
+    return volunteersWithUserData;
   } catch (error) {
     console.error('Error while fetching articles:', error);
     throw error;

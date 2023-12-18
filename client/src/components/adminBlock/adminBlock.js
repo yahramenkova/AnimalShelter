@@ -52,8 +52,8 @@ export default function AdminBlock() {
           <Accordion.Body>
             {volunteers.map((volunteer, index) => (
               <div key={index}>
-                <p>{volunteer.phone_number}</p>
-                <p>{volunteer.experience}</p>
+      <p>{volunteer.user.firstName} {volunteer.user.lastName}</p> <p>phone number: {volunteer.phone_number}</p> <p>experience: {volunteer.experience} </p>
+      <div className='line'></div>
               </div>
             ))}
           </Accordion.Body>
@@ -98,6 +98,7 @@ export default function AdminBlock() {
                 onChange={(e) => setImg(e.target.value)}
               />
               <Button customClass="button-submit" variant="primary" label='Submit' type="submit"/>
+
               <Alert
               className='alert'
                 show={alertMessage !== ''}
@@ -110,6 +111,7 @@ export default function AdminBlock() {
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
+      
     </div>
   );
             }

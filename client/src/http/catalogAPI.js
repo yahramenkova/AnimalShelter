@@ -56,4 +56,27 @@ export const markAnimalAsSold = async (animal)  => {
   } catch (error) {
     console.error(error);
   }
-}
+};
+
+export const createNewAnimal = async (name, species, age, breed, colour, notes, price, img) => {
+  try {
+    const formData = new FormData();
+
+    formData.append('name', name);
+    formData.append('species', species);
+    formData.append('age', age);
+    formData.append('breed', breed);
+    formData.append('colour', colour);
+    formData.append('notes', notes);
+    formData.append('price', price);
+    formData.append('img', img);
+
+    // Send the form data to the server to create the animal
+    const response = await $authHost.post('api/catalog/', formData);
+
+    return response.data;
+  } catch (error) {
+    console.error('Error during animal creation:', error);
+    throw error;
+  }
+};
