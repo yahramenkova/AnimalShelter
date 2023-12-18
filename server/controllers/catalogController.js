@@ -6,15 +6,12 @@ const ApiError = require('../error/ApiError');
 class AnimalCatalogController {
     async create(req, res, next) {
         try {
-            const { name, species, age, breed, colour, notes, price } = req.body;
-            const { img } = req.files;
-            const fileName = uuid.v4() + ".jpg";
-            img.mv(path.resolve(__dirname, '..', 'static', 'catalog_img', fileName));
+            const { name, species, age, breed, colour, notes, price, img } = req.body;
 
             const animal = await AnimalCatalog.create({
                 name,
                 species,
-                img: fileName,
+                img,
                 age,
                 breed,
                 colour,

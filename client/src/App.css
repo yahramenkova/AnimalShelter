@@ -165,3 +165,20 @@ padding-top: 2rem;
   .review-page{
     background: linear-gradient(171deg, #797E72 7.08%, rgba(181, 186, 174, 0.69) 38.08%, #D6D9D6 68.7%);
   }
+  .button-submit{
+  width: 9rem;
+  height: 2.7rem;
+  border-radius: 2rem;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-style: normal;
+  background: #858D70;
+  border: none;
+  color: #ffffff;
+  font-weight: 400;
+  line-height: normal;
+  }
+.alert{
+  margin-top: 1rem;
+}

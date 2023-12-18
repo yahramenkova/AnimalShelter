@@ -6,17 +6,14 @@ const ApiError = require('../error/ApiError');
 class LostAnimalController {
     async create(req, res, next) {
         try {
-            const { species, breed, location, date_lost } = req.body;
-            const { img } = req.files;
-            const fileName = uuid.v4() + ".jpg";
-            img.mv(path.resolve(__dirname, '..', 'static', 'lostAnimal_img', fileName));
+            const { species, breed, location, date_lost, img } = req.body;
             
             const lostAnimal = await LostAnimal.create({
                 species,
                 breed,
                 location,
                 date_lost,
-                img: fileName
+                img,
             });
 
             return res.json(lostAnimal);
