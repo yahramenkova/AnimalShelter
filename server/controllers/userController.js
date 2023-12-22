@@ -17,9 +17,14 @@ class UserController {
     async registration(req, res, next) {
         try {
         const { email, password, role, firstName, lastName } = req.body;
-        const { photo } = req.files;
-            const fileName = uuid.v4() + ".png";
-            photo.mv(path.resolve(__dirname, '..', 'static', 'user_images', fileName));
+        let fileName = null;
+
+         if (req.files && req.files.photo) {
+          const photo = req.files.photo;
+          fileName = uuid.v4() + ".png";
+          photo.mv(path.resolve(__dirname, '..', 'static', 'user_images', fileName));
+    }
+
             
         if (!email || !password) {
             return next(ApiError.badRequest('Некорректный email или password'));

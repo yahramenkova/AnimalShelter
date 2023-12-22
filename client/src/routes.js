@@ -8,7 +8,8 @@ import LostAnimal from "./pages/LostAnimal";
 import Reg from "./pages/Reg";
 import Review from "./pages/Review";
 import VolunteerActivity from "./pages/VolunteerActivity";
-import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE, REVIEW_ROUTE,ANIMAL_DETAILS_ROUTE } from "./utils/consts";
+import NotFound from "./pages/NotFound";
+import { ADMIN_ROUTE, CATALOG_ROUTE, EDUCATION_ROUTE,NOT_FOUND_ROUTE, HOME_ROUTE, LOGIN_ROUTE, LOSTANIMAL_ROUTE, REGISTRATION_ROUTE, VOLUNTEER_ROUTE, REVIEW_ROUTE,ANIMAL_DETAILS_ROUTE } from "./utils/consts";
 
 export const authRoutes =[
     {
@@ -53,5 +54,10 @@ export const publicRoutes = [
    {
         path: VOLUNTEER_ROUTE,
         Component : VolunteerActivity
-    }
+    },
+    {
+        path: NOT_FOUND_ROUTE,
+        Component : NotFound
+    },
+    
 ]

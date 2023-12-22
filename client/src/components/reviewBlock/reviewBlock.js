@@ -55,7 +55,7 @@ const ReviewBlock = () => {
              </div>
              <div className='rec_feedback2'>
                <div className="inf_feedback">
-                <img className="commentators" src={review.user.photo} alt="" />
+                <img className="commentators" src={`http://localhost:7000/static/user_images/${review.user.photo}`} alt="" />
                 <p>{review.user.firstName} {review.user.lastName}</p>
                </div>
              </div>

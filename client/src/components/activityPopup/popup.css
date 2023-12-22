@@ -1,7 +1,7 @@
 /* popup.css */
 .popup-overlay {
   font-family: Arial, sans-serif;
-  max-width: 40rem;
+  max-width: 30rem;
   font-size: 1.3rem;
   position: absolute;
   padding: 1rem;
@@ -13,10 +13,12 @@
 .popup-content{
   font-size: 1.6rem;
 }
-
+.popup{
+  width: 50rem;
+}
 .popup .close {
   position: relative;
-  margin-left: 42.5rem;
+  margin-left: 45rem;
   font-size: 1.3rem;
   cursor: pointer;
   background: none;
