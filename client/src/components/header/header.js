@@ -13,7 +13,7 @@ function Header() {
  const handleLogout = () => {
   user.logout();
 };
-
+const userAuth = localStorage.getItem('auth');
  return (
    <header>
      <Link to="/">
@@ -32,7 +32,9 @@ function Header() {
            <Button customClass="button-logUp" label="Admin" />
          </Link>
        )}
+       {userAuth === 'true' && (
        <Button customClass="button-logUp" onClick={handleLogout} label='Logout' />
+       )}
      </div> 
    </header>
  )

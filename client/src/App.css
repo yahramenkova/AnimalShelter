@@ -13,6 +13,7 @@ padding: 0;
     height: 100%;
 }
 .wrapper{
+    width: 1440px;
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -31,12 +32,15 @@ padding: 0;
       color: inherit;
   }
   html,body{
+    width: 1440px;
     height: 100%;
   }
   body{
   width: 100%;
   background: #CDC5BF;
   margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 0;
   }
   .rec-gradient{
@@ -49,12 +53,11 @@ padding: 0;
     width: 30rem;
     height: auto;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     position: absolute;
-    top: 12rem; /* Можете изменить в зависимости от вашего дизайна */
-    left: 74rem; /* Можете изменить в зависимости от вашего дизайна */
+    top: 10rem; /* Можете изменить в зависимости от вашего дизайна */
+    left: 50rem; /* Можете изменить в зависимости от вашего дизайна */
     z-index: 1; 
-  
   }
   .main-education{
     height: auto;
@@ -67,7 +70,7 @@ padding: 0;
   .article{
   max-width: 25rem;
   width: 100%;
-  height: 4rem;
+  height: 3rem;
   border: none;
   font-size: 1.2rem;
   color: #fff;
@@ -86,9 +89,9 @@ padding: 0;
     gap:10px;
   }
   .pet1{
-  max-width: 20rem;
+  max-width: 18rem;
   width: 100%;
-  height: 20rem;
+  height: 18rem;
   object-fit: cover;
   border-radius: 1rem;
   border: 1px solid #4B5A31;
@@ -97,7 +100,7 @@ padding: 0;
   color: #4B5A31;
   text-align: center;
   font-family: Montserrat;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -148,7 +151,7 @@ padding-top: 2rem;
   color: #4B5A31;
   text-align: center;
   font-family: Montserrat;
-  font-size: 3rem;
+  font-size: 2.2rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

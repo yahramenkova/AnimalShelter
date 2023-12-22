@@ -1,8 +1,9 @@
 const Router = require('express')
 const router = new Router()
 const catalogController = require('../controllers/catalogController')
+const chekRole = require('../middleware/checkRoleMiddleware')
 
-router.post('/', catalogController.create)
+router.post('/',chekRole('ADMIN'), catalogController.create)
 router.get('/all', catalogController.getAllAnimals)
 router.get('/:animal_id',  catalogController.getAnimalById)
 router.put('/buy', catalogController.markAnimalAsSold)

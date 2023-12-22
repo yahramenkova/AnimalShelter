@@ -6,9 +6,9 @@ import HomeBanner from '../components/homeBanner/homeBanner'
 
 function Home() {
   return (
-    <div>
+    <div className='wrapper'>
       <Header />
-      <main>
+      <main className='main'>
       <HomeBanner />
       <AchievementsBlock />
       </main>

@@ -86,30 +86,29 @@ const VolunteerForm = ({ isOpen, onClose }) => {
              onChange={() => setHasVolunteerExperience('Yes')}
              inline
            />
-<Form.Check
-  type="radio"
-  label="No"
-  name="hasVolunteerExperience"
-  checked={hasVolunteerExperience === 'No'}
-  onChange={() => setHasVolunteerExperience('No')}
-  inline
-/>
+          <Form.Check
+           type="radio"
+           label="No"
+           name="hasVolunteerExperience"
+           checked={hasVolunteerExperience === 'No'}
+           onChange={() => setHasVolunteerExperience('No')}
+           inline
+            />
           </Form.Group>
           <Form.Group controlId="volunteerDirections">
-  <Form.Label>Volunteer Directions</Form.Label>
-  <div className="volunteer-form-directions">
-    {directions.map((direction) => (
-      <Form.Check
-        key={direction.activity_id}
-        type="checkbox"
-        label={`${direction.activity_type} (${direction.description}, ${direction.duration} hours)`}
-        checked={selectedDirections.some((selectedDirection) => selectedDirection.activity_id === direction.activity_id)}
-        onChange={() => handleDirectionChange(direction)}
+          <Form.Label>Volunteer Directions</Form.Label>
+          <div className="volunteer-form-directions">
+           {directions.map((direction) => (
+         <Form.Check
+          key={direction.activity_id}
+          type="checkbox"
+          label={`${direction.activity_type} (${direction.description}, ${direction.duration} hours)`}
+          checked={selectedDirections.some((selectedDirection) => selectedDirection.activity_id === direction.activity_id)}
+          onChange={() => handleDirectionChange(direction)}
       />
     ))}
   </div>
-</Form.Group>
-
+      </Form.Group>
           <Button customClass="achiev_button" label="Submit" type="submit" />
         </Form>
       </Modal.Body>

@@ -48,52 +48,49 @@ const RegistrationForm = () => {
   return (
     <div className="registration-form-container">
       <h2>Registration Form</h2>
+      <div className="form__container">
       <form onSubmit={handleSubmit}>
         <label>
-          First Name:
           <input
             type="text"
+            className="input_field"
+            placeholder='Enter First Name:'
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
             required
           />
         </label>
-        <br />
         <label>
-          Last Name:
           <input
             type="text"
+            className="input_field"
+            placeholder='Enter Last Name:'
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
             required
           />
         </label>
-        <br />
         <label>
-          Email:
           <input
             type="email"
+            placeholder='Enter email:'
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
           />
         </label>
-        <br />
-        <label>
-          Password:
           <input
             type="password"
+            placeholder='Enter password:'
+            className="input_field"
             name="password"
             value={formData.password}
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
           Add Photo:
           <input
             type="file"
@@ -101,10 +98,10 @@ const RegistrationForm = () => {
             accept="image/*"
             onChange={handleChange}
           />
-        </label>
-        <br />
+
         <Button label='register' customClass='button-logUp' onClick={signIn}/>
       </form>
+      </div>
     </div>
   );
 };

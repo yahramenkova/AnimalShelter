@@ -7,17 +7,17 @@ function NavBar() {
     <div>
       <nav>
         <ul className="menu_list">
-          <li className="menu_list_item">
+        <li className="menu_list_item">
             <Link to="/">Home</Link>
           </li>
           <li className="menu_list_item">
-            <Link to="/education">Education</Link>
+            <Link to="/education">Article</Link>
           </li>
           <li className="menu_list_item">
             <Link to="/review">Reviews</Link>
           </li>
           <li className="menu_list_item">
-            <Link to="/volunteer">Volunteer</Link>
+            <Link to="/volunteer">Volunteer Activity</Link>
           </li>
         </ul>
       </nav>

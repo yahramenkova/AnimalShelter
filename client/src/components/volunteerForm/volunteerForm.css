@@ -13,12 +13,17 @@
   }
 
   .volunteer-form-modal {
-    max-width: 80rem; 
+    max-width: 60rem; 
     width: 100%;
   }
   
   .volunteer-button {
     margin-top: 10px;
   }
-
-  
+.form-check-label{
+  font-size: 1.2rem;
+}
+.form-check-input:checked{
+    background-color:darkolivegreen;
+    border-color: darkolivegreen;
+  }
