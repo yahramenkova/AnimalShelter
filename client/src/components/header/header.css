@@ -66,3 +66,32 @@ header {
 .button-logIn:hover {
   background-color: #4B5A31; /* Задайте цвет при наведении */
 }
+/* Стили кнопок на планшете */
+@media (max-width: 768px) {
+  .button-logIn,
+  .button-logUp {
+    width: 6rem;
+    height: 2.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Стили кнопок на мобильном устройстве */
+@media (max-width: 320px) {
+  header {
+    display: flex;
+    width: 100%;
+   height: auto;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    background: #CDC5BF;
+    padding-left: 2rem;
+    padding-right: 12rem;
+  }
+  .button-logIn,
+  .button-logUp {
+    width: 5rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
+}

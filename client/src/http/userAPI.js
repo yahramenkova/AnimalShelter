@@ -17,8 +17,6 @@ export const registration = async (firstName, lastName, email, password, photo) 
 
       // Сохранить токен в локальном хранилище
       localStorage.setItem('token', token);
-      
-      // Вернуть токен (или другую нужную информацию)
       return token;
     } else {
       throw new Error('Token not found in server response');
@@ -36,7 +34,7 @@ export const login = async (email, password) => {
 }
 
 export const check = async () => {
-  const {data} = await $authHost.get('api/user/auth' )
+  const {data} = await $authHost.get('api/user/auth')
   localStorage.setItem('token', data.token)
   return jwtDecode(data.token)
 }
