@@ -1,0 +1,66 @@
+version: '3.9'
+
+networks:
+  animal_shelter_network:
+    driver: bridge
+
+services:
+  animal-shelter-service:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: Dockerfile 
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - animal_shelter_network
+    depends_on:
+      - db
+    command: npm run dev 
+
+  db:
+    image: postgres:16
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres 
+      POSTGRES_PASSWORD: 11111
+      POSTGRES_DB: n 
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_animals_data_15:/var/lib/postgresql/data
+      - ./backUp.sql:/backUp.sql
+    networks:
+      - animal_shelter_network
+
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - animal_shelter_network
+    depends_on:
+      - db
+      - animal-shelter-service
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=password
+      - PGADMIN_LISTEN_PORT=8888
+    ports:
+      - "8888:8888"
+    networks:
+      - animal_shelter_network
+    depends_on:
+      - db
+
+volumes:
+  db_animals_data_15:

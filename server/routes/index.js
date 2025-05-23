@@ -8,6 +8,7 @@ const catalogRouter = require('./catalogRouter');
 const lostAnimalRouter = require('./lostAnimalRouter');
 const volunteerRouter = require('./volunteerRouter');
 const volunteerActivityRouter = require('./volunteerActivityRouter');
+const adoptionRouter = require('./adoptionRouter');
 
 
 router.use('/user', userRouter);
@@ -18,5 +19,6 @@ router.use('/education', educationRouter);
 router.use('/record', recordRouter);
 router.use('/review', reviewRouter);
 router.use('/volunteerActivity', volunteerActivityRouter);
+router.use('/adoption', adoptionRouter);
 
 module.exports = router

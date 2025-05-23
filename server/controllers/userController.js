@@ -14,33 +14,38 @@ const generateJwt = (id, email, role) => {
 }
 
 class UserController {
-    async registration(req, res, next) {
-        try {
-        const { email, password, role, firstName, lastName } = req.body;
-        let fileName = null;
+   async registration(req, res, next) {
+  try {
+    const { email, password, role, firstName, lastName, photo } = req.body;
+    let fileName = photo || null;
 
-         if (req.files && req.files.photo) {
-          const photo = req.files.photo;
-          fileName = uuid.v4() + ".png";
-          photo.mv(path.resolve(__dirname, '..', 'static', 'user_images', fileName));
+    if (!email || !password) {
+      return next(ApiError.badRequest('Invalid email or password'));
     }
 
-            
-        if (!email || !password) {
-            return next(ApiError.badRequest('Некорректный email или password'));
-        }
-        const candidate = await User.findOne({ where: { email } });
-        if (candidate) {
-            return next(ApiError.badRequest('Пользователь с таким email уже существует'));
-        }
-        const hashPassword = await bcrypt.hash(password, 5);
-        const user = await User.create({ email, role, firstName, lastName, password: hashPassword, photo: fileName });
-        const token = generateJwt(user.id, user.email, user.role);
-        return res.json({ token });
-    } catch (e) {
-        next(ApiError.badRequest(e.message));
+    const candidate = await User.findOne({ where: { email } });
+    if (candidate) {
+      return next(ApiError.badRequest('The user with this email already exists'));
     }
-    }
+
+    const hashPassword = await bcrypt.hash(password, 5);
+
+    const user = await User.create({
+      email,
+      role,
+      firstName,
+      lastName,
+      password: hashPassword,
+      photo: fileName, // сохраняем ссылку на фото
+    });
+
+    const token = generateJwt(user.id, user.email, user.role);
+    return res.json({ token });
+  } catch (e) {
+    next(ApiError.badRequest(e.message));
+  }
+}
+
 
     async login(req, res, next) {
         try {

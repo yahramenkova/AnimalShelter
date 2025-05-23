@@ -9,14 +9,14 @@ function HomeBanner() {
     <div className="block-home">
       <img className="banner" src={Banner} alt="Banner" />
       <div className="home_text_block">
-        <h1>Meet new friends who are ready to fill your home with love!</h1>
-        <h2>Explore the profiles of our furry friends and find someone who will become your faithful companion.</h2>
+        <h1>Познакомьтесь с новыми друзьями, готовыми наполнить ваш дом любовью!</h1>
+        <h2>Изучите профили наших пушистых друзей и найдите того, кто станет вашим верным спутником.</h2>
         <div className="button_block_find">
           <Link to="/catalog">
-            <Button customClass='button_find_amimal' label='Catalog of animals'/>
+            <Button customClass='button_find_amimal' label='Каталог животных'/>
           </Link>
           <Link to="/lostAnimal">
-            <button className="button_lost_amimal">Lost animals</button>
+            <button className="button_lost_amimal">Найденные животные</button>
           </Link>
         </div>
       </div>

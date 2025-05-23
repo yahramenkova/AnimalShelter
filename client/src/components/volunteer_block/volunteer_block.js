@@ -21,16 +21,16 @@ function AchievementsBlock() {
       <div className="rec_gradient">
         <img className="home_pet" src={PetHouse} alt="pets" />
         <h1 className="text_achievements">
-          <div className="text_volunteer1">What your pet needs, when they need it.</div>
+          <div className="text_volunteer1">Правильный уход, в правильный момент — для каждого животного</div>
         </h1>
       </div>
       <div className="achievements">
         <img className="achievements_wave" src={Wave} alt="" />
         <div className="achievements_text_block">
-          <h1>Become a volunteer</h1>
-          <h2 className="achiev1">Make a difference in the lives of furry companions by volunteering at an animal shelter.</h2>
-          <h2 className="achiev2">Your time and love can give them a second chance, while bringing joy and fulfillment to both of you. Join us in creating a compassionate environment and being a voice for those who cannot speak for themselves.</h2>
-          <Button customClass="achiev_button" label="Submit an Application" onClick={handleOpenForm} />
+          <h1>Стань волонтером!</h1>
+          <h2 className="achiev1">Станьте тем, кто меняет жизни пушистых друзей — станьте волонтёром в приюте для животных</h2>
+          <h2 className="achiev2">Ваше время и забота подарят им второй шанс, а вам — радость и ощущение настоящей значимости. Присоединяйтесь к нам, чтобы вместе создавать атмосферу доброты и стать голосом тех, кто не может говорить</h2>
+          <Button customClass="achiev_button" label="Отправить заявку" onClick={handleOpenForm} />
         </div>
       </div>
       <VolunteerForm isOpen={isFormOpen} onClose={handleCloseForm} />

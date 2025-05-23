@@ -22,18 +22,18 @@ const userAuth = localStorage.getItem('auth');
      <NavBar />
      <div className="button-log">
        <Link to="/login">
-         <Button customClass="button-logIn" label="Log in" />
+         <Button customClass="button-logIn" label="Вход" />
        </Link>
        <Link to="/registration">
-         <Button customClass="button-logUp" label="Log Up" />
+         <Button customClass="button-logUp" label="Регистрация" />
        </Link>
        {userRole === 'ADMIN' && (
          <Link to="/admin">
-           <Button customClass="button-logUp" label="Admin" />
+           <Button customClass="button-Admin" label="Admin" />
          </Link>
        )}
        {userAuth === 'true' && (
-       <Button customClass="button-logUp" onClick={handleLogout} label='Logout' />
+       <Button customClass="button-logOut" onClick={handleLogout} label='Выйти' />
        )}
      </div> 
    </header>

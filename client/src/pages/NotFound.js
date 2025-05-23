@@ -12,13 +12,13 @@ export default function NotFound() {
 
   const textContainerStyle = {
     textAlign: 'center',
-    fontSize: '1.4rem',
+    fontSize: '1.2rem',
   };
 
   return (
     <div style={containerStyle}>
       <p style={textContainerStyle}>
-        To access this page, you need to log in. Please <Link to={LOGIN_ROUTE} className='signup-link'>log in</Link> to continue.
+       Чтобы получить доступ к этой странице, вам необходимо войти в систему. Пожалуйста <Link to={LOGIN_ROUTE} className='signup-link'>войдите</Link> чтобы продолжить.
       </p>
     </div>
   );

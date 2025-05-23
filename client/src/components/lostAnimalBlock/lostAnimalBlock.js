@@ -22,14 +22,14 @@ export default function LostAnimalBlock() {
   return (
     <div className="main_lost_animal">
       <div className="lost_animal_map">
-        <h1>Lost animals</h1>
+        <h1>Найденные животные</h1>
         <div className="lost_animal_container">
           {lostAnimals.map(animal => (
             <div key={animal.animal_id} className="lost_anml">
               <img className="lost_pet1" src={animal.img} alt={`Lost pet: ${animal.species}`} />
               <div className="lost_inf">
-                <h2>{`Breed: ${animal.breed || 'No breed'}`}</h2>
-                <p>{`Location: ${animal.location}`}</p>
+                <h2>{`Порода: ${animal.breed || 'No breed'}`}</h2>
+                <p>{`Локация: ${animal.location}`}</p>
                 <p>{new Date(animal.date_lost).toLocaleDateString()}</p>
                
               </div>

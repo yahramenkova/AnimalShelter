@@ -4,9 +4,12 @@ import Button from '../button/button';
 import { Alert } from 'react-bootstrap';
 import { createLostAnimal } from '../../http/lostAnimalAPI';
 import { getVolunteer } from '../../http/volunteerAPI';
+import { getAdoptionRequests, updateAdoptionStatus } from '../../http/adoptionAPI';
+import jsPDF from 'jspdf';
 
 export default function AdminBlock() {
   const [volunteers, setVolunteers] = useState([]);
+  const [adoptionRequests, setAdoptionRequests] = useState([]);
   const [species, setSpecies] = useState('');
   const [breed, setBreed] = useState('');
   const [location, setLocation] = useState('');
@@ -15,25 +18,22 @@ export default function AdminBlock() {
   const [alertMessage, setAlertMessage] = useState('');
 
   useEffect(() => {
-    const fetchVolunteers = async () => {
-      const volunteersData = await getVolunteer();
-      setVolunteers(volunteersData);
-    };
+  const fetchData = async () => {
+    const volunteersData = await getVolunteer();
+    let adoptionData = await getAdoptionRequests();
 
-    fetchVolunteers();
-  }, []);
+    // сортировка: новые (с большим id) первыми
+    adoptionData.sort((a, b) => b.adoption_id - a.adoption_id);
+
+    setVolunteers(volunteersData);
+    setAdoptionRequests(adoptionData);
+  };
+  fetchData();
+}, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Get the values from the form
-    const species = e.target.species.value;
-    const breed = e.target.breed.value;
-    const location = e.target.location.value;
-    const dateLost = e.target.dateLost.value;
-    const img = e.target.img.value;
-
-    // Send the data to the server
     try {
       await createLostAnimal(species, breed, location, dateLost, img);
       setAlertMessage('Animal added successfully!');
@@ -41,8 +41,38 @@ export default function AdminBlock() {
       console.error(error);
       setAlertMessage('Failed to add animal.');
     }
-
   };
+
+  const exportVolunteersToPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Volunteers List', 10, 10);
+    let y = 20;
+    volunteers.forEach((volunteer, index) => {
+      const text = `${index + 1}. ${volunteer.user.firstName} ${volunteer.user.lastName} | Phone: ${volunteer.phone_number} | Experience: ${volunteer.experience}`;
+      doc.text(text, 10, y);
+      y += 10;
+      if (y > 270) {
+        doc.addPage();
+        y = 20;
+      }
+    });
+    doc.save('volunteers_list.pdf');
+  };
+
+  const handleApprove = async (id) => {
+  try {
+    await updateAdoptionStatus(id, 'approved');
+    setAdoptionRequests(prev =>
+      prev.map(req =>
+        req.adoption_id === id ? { ...req, status: 'approved' } : req
+      )
+    );
+  } catch (error) {
+    console.error('Ошибка при подтверждении заявки:', error);
+  }
+};
+
 
   return (
     <div>
@@ -50,17 +80,26 @@ export default function AdminBlock() {
         <Accordion.Item eventKey="all-volunteers">
           <Accordion.Header>Show All Volunteers</Accordion.Header>
           <Accordion.Body>
+            <Button
+              customClass="button-pdf"
+              variant="secondary"
+              label="Export to PDF"
+              onClick={exportVolunteersToPDF}
+            />
             {volunteers.map((volunteer, index) => (
               <div key={index}>
-      <p>{volunteer.user.firstName} {volunteer.user.lastName}</p> <p>phone number: {volunteer.phone_number}</p> <p>experience: {volunteer.experience} </p>
-      <div className='line'></div>
+                <p>{volunteer.user.firstName} {volunteer.user.lastName}</p>
+                <p>Phone number: {volunteer.phone_number}</p>
+                <p>Experience: {volunteer.experience}</p>
+                <div className='line'></div>
               </div>
             ))}
           </Accordion.Body>
         </Accordion.Item>
+
         <Accordion.Item eventKey="add-lost-animal">
           <Accordion.Header>Add Lost Animal</Accordion.Header>
-          <Accordion.Body>
+          <Accordion.Body lang="en">
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -84,8 +123,8 @@ export default function AdminBlock() {
                 onChange={(e) => setLocation(e.target.value)}
               />
               <input
-                type="date"
-                placeholder="Date of Loss"
+                type="text"
+                placeholder="Date lost (dd.mm.yyyy)"
                 name="dateLost"
                 value={dateLost}
                 onChange={(e) => setDateLost(e.target.value)}
@@ -97,10 +136,9 @@ export default function AdminBlock() {
                 value={img}
                 onChange={(e) => setImg(e.target.value)}
               />
-              <Button customClass="button-submit" variant="primary" label='Submit' type="submit"/>
-
+              <Button customClass="button-logUp" variant="primary" label="Submit" type="submit" />
               <Alert
-              className='alert'
+                className="alert"
                 show={alertMessage !== ''}
                 dismissible
                 onClose={() => setAlertMessage('')}
@@ -110,8 +148,40 @@ export default function AdminBlock() {
             </form>
           </Accordion.Body>
         </Accordion.Item>
+
+        <Accordion.Item eventKey="adoption-requests">
+          <Accordion.Header>View Adoption Requests</Accordion.Header>
+          <Accordion.Body>
+            {adoptionRequests.length === 0 ? (
+              <p>No adoption requests available.</p>
+            ) : (
+              adoptionRequests.map((request, index) => (
+                <div key={index}>
+                  <p><strong>Animal ID:</strong> {request.animal_id}</p>
+                  <p><strong>User ID:</strong> {request.user_id}</p>
+                  <p><strong>Phone:</strong> {request.phone}</p>
+                  <p><strong>Comment:</strong> {request.comment}</p>
+                  <p>
+                    <strong>Status:</strong>{' '}
+                    <span style={{ color: request.status === 'approved' ? 'green' : 'black' }}>
+                      {request.status}
+                    </span>
+                  </p>
+                  {request.status !== 'approved' && (
+                    <Button
+                      customClass="button-submit"
+                      variant="success"
+                      label="Approve"
+                      onClick={() => handleApprove(request.adoption_id)}
+                    />
+                  )}
+                  <div className="line_adoption"></div>
+                </div>
+              ))
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
       </Accordion>
-      
     </div>
   );
-            }
+}

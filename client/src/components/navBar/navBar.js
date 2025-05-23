@@ -8,16 +8,16 @@ function NavBar() {
       <nav>
         <ul className="menu_list">
         <li className="menu_list_item">
-            <Link to="/">Home</Link>
+            <Link to="/">Главная</Link>
           </li>
           <li className="menu_list_item">
-            <Link to="/education">Article</Link>
+            <Link to="/education">Полезные статьи</Link>
           </li>
           <li className="menu_list_item">
-            <Link to="/review">Reviews</Link>
+            <Link to="/review">Отзывы</Link>
           </li>
           <li className="menu_list_item">
-            <Link to="/volunteer">Volunteer Activity</Link>
+            <Link to="/volunteer">Волонтерские активности</Link>
           </li>
         </ul>
       </nav>

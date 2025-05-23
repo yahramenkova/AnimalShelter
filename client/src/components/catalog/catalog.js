@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { getAnimals, getAllCats, getAllDogs } from '../../http/catalogAPI';
-import { markAnimalAsSold } from '../../http/catalogAPI';
 import './catalog.css';
 import Button from '../button/button';
 import { useNavigate } from 'react-router-dom';
+import AdoptionModal from '../adoptionModal/adoptionModal';
 
 export default function Catalog() {
   const [animals, setAnimals] = useState([]);
@@ -11,6 +11,9 @@ export default function Catalog() {
   const [showOnlyDogs, setShowOnlyDogs] = useState(false);
   const [showAllAnimals, setShowAllAnimals] = useState(true); // Set the default state to show all animals
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedAnimalId, setSelectedAnimalId] = useState(null);
+
 
   useEffect(() => {
     const fetchAnimals = async () => {
@@ -32,16 +35,11 @@ export default function Catalog() {
     fetchAnimals();
   }, [showOnlyCats, showOnlyDogs, showAllAnimals]);
 
-  const handleBuyButtonClick = async (animalId) => {
-    try {
-      await markAnimalAsSold(animalId);
-      const updatedAnimals = animals.filter((animal) => animal.animal_id !== animalId);
-      setAnimals(updatedAnimals);
-      alert('Покупка успешно оформлена!');
-    } catch (error) {
-      console.error('Ошибка при покупке животного:', error);
-    }
+  const handleBuyButtonClick = (animalId) => {
+    setSelectedAnimalId(animalId);
+    setShowModal(true);
   };
+  
 
   const handleShowCatsClick = () => {
     setShowOnlyCats(!showOnlyCats);
@@ -60,25 +58,26 @@ export default function Catalog() {
     setShowOnlyCats(false);
     setShowOnlyDogs(false);
   };
-
+  
+  
   return (
     <div className="catalog_block">
-      <h1>Catalog</h1>
+      <h1>Каталог</h1>
       <div className="button-filters">
         <Button
           customClass={`button_lost_animal ${showOnlyCats ? 'active' : ''}`}
           onClick={handleShowCatsClick}
-          label="Cats"
+          label="Коты"
         />
         <Button
           customClass={`button_lost_animal ${showOnlyDogs ? 'active' : ''}`}
           onClick={handleShowDogsClick}
-          label="Dogs"
+          label="Собаки"
         />
         <Button
           customClass={`button_lost_animal ${showAllAnimals ? 'active' : ''}`}
           onClick={handleShowAllAnimalsClick}
-          label="All Animals"
+          label="Сбросить"
         />
       </div>
       <div className="block_catalog">
@@ -89,14 +88,20 @@ export default function Catalog() {
             <p>${animal.price.toFixed(2)}</p>
             <Button
               customClass="review_button"
-              label="read more"
+              label="узнать больше"
               animalId={animal.animal_id}
               onClick={() => navigate(`/catalog/${animal.animal_id}`)}
             />
-            <Button customClass="review_button" label="buy" onClick={() => handleBuyButtonClick(animal.animal_id)} />
+            <Button customClass="review_button" label="Выбрать" onClick={() => handleBuyButtonClick(animal.animal_id)} />
           </div>
         ))}
       </div>
+      {showModal && (
+    <AdoptionModal
+      animalId={selectedAnimalId}
+      onClose={() => setShowModal(false)}
+    />
+  )}
     </div>
   );
 }

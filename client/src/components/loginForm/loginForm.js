@@ -42,17 +42,17 @@ const AuthorizationForm = observer(() => {
     <section className="autorize">
       <div className="registration-form-container">
         <div className="autorize_text">
-          <h2 className="enter__data">Enter your data</h2>
+          <h2 className="enter__data">Заполните форму</h2>
         </div>
         <div className="form__container">
           <form onSubmit={handleSubmit} className="form">
             {error && <div className="alert alert-danger">{error}</div>} {/* Отображение ошибки */}
-            <input type="text" className="input_field" placeholder="Login/Email" onChange={handleEmailChange} />
-            <input type="password" className="input_field" placeholder="Password" onChange={handlePasswordChange} />
-            <Button type="submit" customClass="button-logIn" label="Submit" />
+            <input type="text" className="input_field" placeholder="Введите email:" onChange={handleEmailChange} />
+            <input type="password" className="input_field" placeholder="Введите пароль:" onChange={handlePasswordChange} />
+            <Button type="submit" customClass="button-logIn" label="Войти" />
           </form>
           <div className="registration-link">
-            <p>Not registered yet? <Link to="/registration" className="signup-link">Sign up</Link></p>
+            <p>Ещё не зарегистрированы? <Link to="/registration" className="signup-link">Регистрация</Link></p>
           </div>
         </div>
       </div>

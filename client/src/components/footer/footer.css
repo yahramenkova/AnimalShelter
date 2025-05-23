@@ -15,8 +15,8 @@ text-align: center;
     display: flex;
     gap: 11rem;
     color: rgb(255, 255, 255);
-    padding-top: 8rem;
-    padding-left: 13rem;
+    padding-top: 6.5rem;
+    padding-left: 12rem;
     padding-bottom: 5rem;
     font-size: 1rem;
     position: relative;
@@ -81,6 +81,8 @@ margin-bottom: 0.5rem;
 .corporate p{
 margin-bottom: 0;
 }
-  
+.newsletter p{
+margin-bottom: 0;
+}  
  
   

@@ -43,28 +43,28 @@ const InteractiveMap = () => {
           <Button customClass='review_button' 
            label='back' 
            onClick={() => navigate(`/catalog`)}/>
-          <h1>INTERACTIVE MAP</h1>
+          <h1>ИНТЕРАКТИВНАЯ КАРТА</h1>
           <div className="block_inf_text">
             <h2>{animalData.breed}</h2>
-            <p>Name: {animalData.name}</p>
-            <p>Breed: {animalData.breed}</p>
-            <p>Age: {animalData.age} years</p>
-            <p>Color: {animalData.colour}</p>
-            <p>Special marks: {animalData.species}</p>
-            <p>Notes: {animalData.notes}</p>
-            <p>Price: ${animalData.price.toFixed(2)}</p>
+            <p>Кличка: {animalData.name}</p>
+            <p>Порода: {animalData.breed}</p>
+            <p>Возраст: {animalData.age} years</p>
+            <p>Окрас: {animalData.colour}</p>
+            <p>Вид: {animalData.species}</p>
+            <p>Примечания: {animalData.notes}</p>
+            <p>Стоимость: ${animalData.price.toFixed(2)}</p>
               <h2 className="date">{animalData.date}</h2>
               <Button customClass='review_button'
      label='medical card' 
      onClick={openPopup} />
      {showPopup && (
        <div className="popup">
-         <h2>Medical Card</h2>
-         <p>weight: {animalData.record.weight}</p>
-         <p>surgical interventions: {animalData.record.surgical_interventions}</p>
-         <p>vaccinations: {animalData.record.vaccinations}</p>
-         <p>chronic diseases: {animalData.record.chronic_diseases}</p>
-         <p>allergies: {animalData.record.allergies}</p>
+         <h2>Медицинская карта</h2>
+         <p>вес: {animalData.record.weight}</p>
+         <p>хирургические вмешательства: {animalData.record.surgical_interventions}</p>
+         <p>вакцины: {animalData.record.vaccinations}</p>
+         <p>хронические заболевания: {animalData.record.chronic_diseases}</p>
+         <p>аллергия: {animalData.record.allergies}</p>
          <Button onClick={closePopup} label='close' customClass='review_button'/>
        </div>
      )}

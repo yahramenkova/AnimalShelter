@@ -16,7 +16,7 @@ export default function VolunteerActivity() {
         const activitiesData = await getActivity();
         setActivities(activitiesData);
       } catch (error) {
-        console.error('Error while fetching volunteer activities:', error);
+        console.error('Ошибка при выборе волонтерской деятельности:', error);
       }
     };
 
@@ -46,13 +46,13 @@ export default function VolunteerActivity() {
 
   return (
     <div className='volunteer_block'>
-      <h1>Volunteer Activity</h1>
+      <h1>Волонтерская деятельность</h1>
       <div className='volunteer_inf'>
         {activities.map((activity) => (
           <div key={activity.activity_id} className='active1'>
             <img className="img-activity" src={activity.img} alt={activity.activity_type} />
             <h2>{activity.activity_type}</h2>
-            <Button label='read more' customClass='review_button' onClick={() => openPopup(activity)} />
+            <Button label='узнать больше' customClass='review_button' onClick={() => openPopup(activity)} />
           </div>
         ))}
         <ActivityPopup isOpen={isPopupOpen} onClose={closePopup} content={popupContent} />

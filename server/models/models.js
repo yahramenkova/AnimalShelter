@@ -1,6 +1,14 @@
 const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
 
+sequelize.sync({ alter: true }) // 👈 обновит структуру БД под модели
+  .then(() => {
+    console.log('База данных успешно синхронизирована');
+  })
+  .catch(err => {
+    console.error('Ошибка синхронизации:', err);
+  });
+
 const User = sequelize.define('user', {
     user_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     email: { type: DataTypes.STRING, unique: true },
@@ -55,14 +63,26 @@ const AnimalCatalog = sequelize.define('animal_catalog', {
     notes: { type: DataTypes.STRING },
     price: { type: DataTypes.INTEGER, allowNull: false },
     status: {
-        type: DataTypes.ENUM('продается', 'продано'),
+        type: DataTypes.ENUM('продается', 'приютили'),
         defaultValue: 'продается'
     }
 }, {
     timestamps: false
 });
 
-
+const Adoption = sequelize.define('adoption', {
+    adoption_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    phone: { type: DataTypes.STRING, allowNull: false },
+    comment: { type: DataTypes.STRING }, // доп. информация от пользователя
+    status: {
+      type: DataTypes.ENUM('в ожидании', 'одобрено', 'отклонено'),
+      defaultValue: 'pending'
+    },
+    request_date: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+  }, {
+    timestamps: false
+  });
+  
 const Review = sequelize.define('review', {
     review_id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     rating: { type: DataTypes.INTEGER, allowNull: false },
@@ -137,6 +157,13 @@ Record.belongsTo(AnimalCatalog, { foreignKey: 'animal_id' });
 Volunteer.belongsToMany(VolunteerActivity, { through: VolunteerVolunteerActivity });
 VolunteerActivity.belongsToMany(Volunteer, { through: VolunteerVolunteerActivity });
 
+User.hasMany(Adoption, { foreignKey: 'user_id' });
+Adoption.belongsTo(User, { foreignKey: 'user_id' });
+
+AnimalCatalog.hasMany(Adoption, { foreignKey: 'animal_id' });
+Adoption.belongsTo(AnimalCatalog, { foreignKey: 'animal_id' });
+
+
 module.exports = {
     User,
     AnimalCatalog,
@@ -147,6 +174,7 @@ module.exports = {
     Volunteer,
     VolunteerActivity,
     VolunteerVolunteerActivity,
+    Adoption,
 };
 
 

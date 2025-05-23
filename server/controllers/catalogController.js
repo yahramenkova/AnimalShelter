@@ -66,7 +66,7 @@ class AnimalCatalogController {
         try {
           const animals = await AnimalCatalog.findAll({
             where: {
-              species: 'Cat',
+              species: 'Кошка',
               status: 'продается'
             }
           });
@@ -81,7 +81,7 @@ class AnimalCatalogController {
         try {
           const animals = await AnimalCatalog.findAll({
             where: {
-              species: 'Dog',
+              species: 'Собака',
               status: 'продается'
             }
           });
@@ -99,16 +99,16 @@ class AnimalCatalogController {
           const animal = await AnimalCatalog.findByPk(animal_id);
       
           if (!animal) {
-            return res.status(404).json({ error: 'Животное не найдено' });
+            return res.status(404).json({ error: 'The animal was not found' });
           }
       
-          animal.status = 'продано';
+          animal.status = 'приютили';
           await animal.save();
       
-          return res.json({ message: 'Статус животного успешно изменен на "продано"' });
+          return res.json({ message: 'The status of the animal has been successfully changed to "adopted"' });
         } catch (error) {
           console.error(error);
-          return next(ApiError.internal('Произошла ошибка при изменении статуса животного'));
+          return next(ApiError.internal('An error occurred when changing the status of the animal'));
         }
       }
 
@@ -120,7 +120,7 @@ class AnimalCatalogController {
             const animal = await AnimalCatalog.findByPk(animal_id);
 
             if (!animal) {
-                return next(ApiError.notFound('Животное не найдено'));
+                return next(ApiError.notFound('The animal was not found'));
             }
 
             animal.name = name;
@@ -138,7 +138,7 @@ class AnimalCatalogController {
             return res.json(animal);
         } catch (error) {
             console.error(error);
-            return next(ApiError.internal('Произошла ошибка при обновлении информации о животном'));
+            return next(ApiError.internal('An error occurred when updating information about an animal'));
         }
     }
 }

@@ -1,7 +1,7 @@
 .volunteer_inf{
 display: grid;
-grid-template-columns: repeat(2, 1fr); /* 4 равных колонки */
-gap: 2rem; /* пространство между колонками */
+grid-template-columns: repeat(3, 1fr); /* 4 равных колонки */
+gap: 1.5rem; /* пространство между колонками */
 width: 100%; /* ширина контейнера 100% */
 padding-left: 5.5rem;
 padding-top: 1rem;
@@ -37,7 +37,7 @@ padding-bottom: 1.8rem;
     line-height: 110%; /* 25.3px */
 }
 .img-activity{
-    width: 30rem;
+    width: 20rem;
     height: 18rem;
     object-fit: cover;
     border-radius: 2rem;
@@ -47,7 +47,7 @@ padding-bottom: 1.8rem;
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    width: 30rem;
+    width: 20rem;
 }
 .volunteer_block h3{
 color: #0D0D0D;

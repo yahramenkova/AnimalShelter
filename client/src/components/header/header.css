@@ -32,13 +32,13 @@ header {
 
 .button-log {
   display: flex;
-  gap: 1rem;
+  gap: 0.7rem;
   padding-top: 0.7rem;
 }
 
 .button-logIn,
 .button-logUp {
-  width: 7rem;
+  width: 8rem;
   height: 2.4rem;
   border-radius: 1rem;
   text-align: center;
@@ -60,6 +60,22 @@ header {
   background: #858D70;
   border: none;
   color: #ffffff;
+}
+
+.button-logOut {
+  background: #858D70;
+  border: none;
+  color: #ffffff;
+  width: 5rem;
+  height: 2.4rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1rem;
+  font-style: normal;
+  margin-top: 0.6rem;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .button-logUp:hover,
@@ -90,7 +106,12 @@ header {
   }
   .button-logIn,
   .button-logUp {
-    width: 5rem;
+    width: 5.5rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
+   .button-logUp {
+    width: 5.5rem;
     height: 2rem;
     font-size: 0.8rem;
   }

@@ -10,17 +10,19 @@ const ReviewBlock = () => {
  const [isModalOpen, setIsModalOpen] = useState(false);
 
  useEffect(() => {
-   const fetchReviews = async () => {
-     try {
-       const reveiwData = await getAllReviews();
-       setReviews(reveiwData);
-     } catch (error) {
-       console.error('Ошибка при получении списка комментариев:', error);
-     }
-   };
-   
-   fetchReviews();
- }, []);
+  const fetchReviews = async () => {
+    try {
+      const reviewData = await getAllReviews();
+      // Сортировка по дате: новые сначала
+      const sortedReviews = reviewData.sort((a, b) => new Date(b.date_posted) - new Date(a.date_posted));
+      setReviews(sortedReviews);
+    } catch (error) {
+      console.error('Ошибка при получении списка комментариев:', error);
+    }
+  };
+
+  fetchReviews();
+}, []);
 
  const handleOpenModal = () => {
    setIsModalOpen(true);
@@ -31,11 +33,11 @@ const ReviewBlock = () => {
  };
 
  const handleAddReview = (review) => {
-   const updatedReviews = [...reviews, review];
-   setReviews(updatedReviews);
-   // Сохранение обновленных комментариев в локальное хранилище
-   localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
- };
+  const updatedReviews = [review, ...reviews]; // добавляем в начало
+  setReviews(updatedReviews);
+  localStorage.setItem('userReviews', JSON.stringify(updatedReviews));
+};
+
 
  return (
    <Container>
@@ -55,7 +57,7 @@ const ReviewBlock = () => {
              </div>
              <div className='rec_feedback2'>
                <div className="inf_feedback">
-                <img className="commentators" src={`http://localhost:7000/static/user_images/${review.user.photo}`} alt="" />
+                <img className="commentators" src={review.user.photo} alt="" />
                 <p>{review.user.firstName} {review.user.lastName}</p>
                </div>
              </div>
